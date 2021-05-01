@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTY PE html>
+{% block hint %}{% endblock hint %}
+<html lang="en-us">
+<head>
+  {% block meta %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  {% endblock meta %}
+
+  <title>{% block title %}{% endblock title %}| ACT CRM</title>
+  <!--favicon icon-->
+  <link rel="icon" href="{% static 'common/img/act_logo.png' %}" type="image/png" sizes="16x16">
+
+  {% block commoncss %}
+
+  {% endblock commoncss %}
+
+
+  {% block commonjs %}
+  {% endblock commonjs %}
+
+
+  {% block css %}{% endblock css %}
+  {% block extrahead %}{% endblock extrahead %}
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<!--  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1LN71P5FPN"></script>-->
+<!--  <script>-->
+<!--      window.dataLayer = window.dataLayer || [];-->
+
+<!--      function gtag() {-->
+<!--          dataLayer.push(arguments);-->
+<!--      }-->
+
+<!--      gtag('js', new Date());-->
+
+<!--      gtag('config', 'G-1LN71P5FPN');-->
+<!--  </script>-->
+</head>
+
+<body class="{% block bodyclass %}{% endblock bodyclass %}"
+      data-admin-utc-offset="{% now 'Z' %}">
+
+
+{% block navbar %}
+  <!--header section start-->
+  <header>
+
+  </header>
+  <!--header section end-->
+{% endblock navbar %}
+
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show mx-2 my-1" role="alert">
+      {{ message|safe }}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  {% endfor %}
+{% endif %}
+
+{% block content %}{% endblock content %}
+
+{% block footer %}
+  <!--footer section start-->
+  <footer>
+
+  </footer>
+  <!--footer section end-->
+{% endblock footer %}
+
+
+
+{% block js %}
+
+{% endblock js %}
+</body>
+</html>
