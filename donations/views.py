@@ -23,13 +23,13 @@ class AcceptWebhook(APIView):
 	def post(request):
 		print(request.data)
 		print(request.headers)
-		client = razorpay.Client(auth=(os.getenv('RZP_KEY'), os.getenv("RZP_SECRET_KEY")))
-		try:
-			payload_body = json.dumps(request.data, separators=(',', ':'))
-			client.utility.verify_webhook_signature(payload_body, request.headers['X-Razorpay-Signature'],
-			                                        os.getenv('RZP_DOMESTIC_WEBHOOK_SECRET'))
-		except SignatureVerificationError:
-			return Response({'status': 'false', 'detail': 'Webhook signature verification error.'}, status=424)
+		# client = razorpay.Client(auth=(os.getenv('RZP_KEY'), os.getenv("RZP_SECRET_KEY")))
+		# try:
+		# 	payload_body = json.dumps(request.data, separators=(',', ':'))
+		# 	client.utility.verify_webhook_signature(payload_body, request.headers['X-Razorpay-Signature'],
+		# 	                                        os.getenv('RZP_DOMESTIC_WEBHOOK_SECRET'))
+		# except SignatureVerificationError:
+		# 	return Response({'status': 'false', 'detail': 'Webhook signature verification error.'}, status=424)
 		if request.data['event'] == 'payment.captured' or request.data['event'] == 'payment.failed':
 			payment = request.data['payload']['payment']['entity']
 			donor = payment.get('notes')
