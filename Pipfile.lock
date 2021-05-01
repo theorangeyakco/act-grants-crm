@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "1e065477c5045fe9aadb98f9e97f40e507a4299bfd5489aba302ce0458486679"
+            "sha256": "8df32e98a53d1eafe0c0d5664d1e9439490812ca0f2d4b603ac1abcb5842cefd"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -294,6 +294,20 @@
                 "sha256:cdf6525904cc597730141d61b36f2e4b8ecc257c420fa2f4549bac2c2d0cb72f"
             ],
             "version": "==0.10.0"
+        },
+        "mailchimp-marketing": {
+            "hashes": [
+                "sha256:7e321cae6f69d3a33735541e4d70f926bd3586e845704a436fb55313ef7e55b1"
+            ],
+            "index": "pypi",
+            "version": "==3.0.41"
+        },
+        "mailchimp-transactional": {
+            "hashes": [
+                "sha256:5742e6d8327166555688e4cf0aa0e3b5e546ead23d33b3ecd5cc9cf7396c7581"
+            ],
+            "index": "pypi",
+            "version": "==1.0.25"
         },
         "markdown": {
             "hashes": [

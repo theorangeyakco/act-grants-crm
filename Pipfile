@@ -46,6 +46,8 @@ django-s3direct = "*"
 django-countries = "*"
 django-rest-framework = "*"
 razorpay = "*"
+mailchimp-transactional = "*"
+mailchimp-marketing = "*"
 
 [requires]
 python_full_version = "3.8.7"
