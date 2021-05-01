@@ -14,7 +14,7 @@ class Donation(models.Model):
 	donor_pan = models.CharField(max_length=16, null=True, blank=True)
 	donor_address = models.CharField(max_length=2048)
 	donor_country = models.CharField(max_length=32)
-	donor_zipcode = models.CharField(max_length=16)
+	donor_zipcode = models.CharField(max_length=16, null=True, blank=True)
 	payment_time = models.DateTimeField()
 	rzp_response = JSONField()
 	rzp_payment_id = models.CharField(max_length=32)
