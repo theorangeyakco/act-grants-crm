@@ -20,6 +20,8 @@ class AcceptWebhook(APIView):
 
 	@staticmethod
 	def post(request):
+		print(request.data)
+		print(request.headers)
 		client = razorpay.Client(auth=(os.getenv('RZP_KEY'), os.getenv("RZP_SECRET_KEY")))
 		try:
 			client.utility.verify_webhook_signature(request.data, request.headers['X-Razorpay-Signature'],
