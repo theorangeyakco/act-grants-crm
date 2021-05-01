@@ -33,7 +33,7 @@ class AcceptWebhook(APIView):
 		if request.data['event'] == 'payment.captured' or request.data['event'] == 'payment.failed':
 			payment = request.data['payload']['payment']['entity']
 			donor = payment.get('notes')
-			Donation.objects.create(rzp_payment_id=payment.get('id'), amount=int(payment.get('amount')),
+			Donation.objects.create(rzp_payment_id=payment.get('id'), amount=int(payment.get('amount')/100),
 			                        currency=payment.get('currency'), donor_name=donor.get('name'),
 			                        donor_email=donor.get('email_address'), donor_pan=donor.get('pan_number'),
 			                        donor_address=donor.get('address'), donor_country="India",
