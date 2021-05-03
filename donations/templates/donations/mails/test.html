@@ -1,18 +1,193 @@
 {% load static %}
-<html lang=en>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-  <meta charset=utf-8>
-  <title>Live Products</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donation for Email</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet"/>
+  <style>
+      body {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 2rem;
+          background: rgb(0, 173, 239);
+          background: linear-gradient(135deg, rgba(0, 173, 239, 1) 0%, rgba(234, 1, 141, 1) 100%);
+      }
+
+      #main {
+          max-width: 70rem;
+          background: white;
+          padding: 16px;
+          border-radius: 8px;
+      }
+
+      #text {
+          margin-left: 4rem;
+          margin-right: 16rem;
+          font-family: 'Open Sans', sans-serif;
+          line-height: 1.6rem;
+      }
+
+      @media only screen and (max-width: 600px) {
+          #text {
+              margin-left: 2rem;
+              margin-right: 2rem;
+          }
+      }
+
+      #logo {
+          display: flex;
+          justify-content: flex-end;
+      }
+
+      #logo img {
+          width: 70px;
+          height: 70px;
+          position: relative;
+          top: 5px;
+          right: 18px;
+      }
+
+      #logo p {
+          margin: auto;
+          position: relative;
+          right: 25px;
+          font-family: 'Open Sans', sans-serif;
+      }
+
+      .act-logo-clickable:hover {
+          cursor: pointer;
+          opacity: 0.7;
+          transition: 0.2s ease all;
+      }
+
+      #social ul {
+          display: flex !important;
+      }
+
+      #social li {
+          background: black;
+          border-radius: 50%;
+          margin-right: 8px;
+          width: 32px;
+          height: 32px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          box-shadow: 5px 10px 11px -1px rgba(169, 169, 169, 0.75);
+          -webkit-box-shadow: 5px 10px 11px -1px rgba(169, 169, 169, 0.75);
+          -moz-box-shadow: 5px 10px 11px -1px rgba(169, 169, 169, 0.75);
+      }
+  </style>
 </head>
+
 <body>
-
-Hi {{ name }}, <br>
-Thank you for your donation. <br>
-NOTE: This is a test email for demonstration only.
-<br><br>
-Regards,
-ACT Grants
-
-
+<main id="main">
+  <section id="logo">
+    <div class="act-logo-clickable">
+      <img src="https://actgrants.in/wp-content/uploads/2021/02/ACT-Logo.png">
+      <p>actgrants.in</p>
+    </div>
+  </section>
+  <section id="text">
+    <p>Dear {{ name }}, </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce arcu justo, accumsan nec mauris vitae,
+      elementum
+      feugiat leo. Praesent porttitor a lectus varius fermentum. Curabitur ex diam, malesuada vel suscipit
+      vitae,
+      finibus vel ipsum. Integer elit odio, tincidunt in tempus vel, aliquet ac augue. Vivamus non odio orci.
+      Quisque
+      et lectus et elit tempor feugiat. Nunc porttitor molestie lorem a cursus. Suspendisse dolor odio, mattis
+      semper
+      nisi vitae, tristique porta eros. Nulla egestas tincidunt metus in cursus. Sed ultricies semper ipsum,
+      vel
+      tristique diam pharetra elementum. Nunc tempus iaculis mi sed ullamcorper.
+    </p>
+    <p>
+      Aenean posuere ipsum ac ipsum euismod, sit amet commodo nunc molestie. Nullam facilisis blandit tellus,
+      posuere
+      tincidunt orci pharetra sed. Praesent nunc metus, convallis eu malesuada consequat, tristique suscipit
+      purus.
+      Quisque quis dictum mi, in dapibus nisi. Integer placerat nisl id est condimentum fermentum. Duis
+      vehicula
+      egestas tincidunt. Vestibulum imperdiet sodales risus, eget viverra erat vulputate vitae. Phasellus nisl
+      enim,
+      euismod et blandit et, mollis ut nisl. Nunc luctus sit amet arcu eget pulvinar. In pellentesque in risus
+      ut
+      volutpat. Sed vel ex sit amet enim rutrum bibendum.
+    </p>
+    <p>
+      Nulla purus dui, dignissim vel dui porttitor, tincidunt elementum enim. Vivamus vestibulum eu dolor et
+      tincidunt. Aliquam cursus sem quis lacus commodo cursus. Aenean a bibendum ipsum. Mauris tristique quam
+      quis
+      est
+      maximus sollicitudin. Proin iaculis tellus at orci ultricies condimentum. Donec sed facilisis lorem.
+      Curabitur
+      ultrices, ex a suscipit molestie, dolor orci laoreet purus, a laoreet turpis lorem eu elit. Aliquam ac
+      sollicitudin diam, at pharetra nunc. Mauris at lorem vitae est ullamcorper interdum sed ac nulla.
+      Integer
+      hendrerit lobortis tempus.
+    </p>
+    <p>
+      Fusce ullamcorper mauris ac risus tincidunt faucibus. Praesent hendrerit erat vel dignissim condimentum.
+      Vivamus
+      ultricies et enim sit amet venenatis. Quisque faucibus imperdiet vestibulum. In vestibulum molestie dui
+      nec
+      suscipit. Mauris rutrum, ligula non convallis consectetur, massa purus ornare nisl, ac feugiat dolor
+      urna
+      volutpat mi. Nunc volutpat rhoncus nulla quis sodales. Phasellus porta dignissim tristique. Donec et
+      elit
+      sodales, efficitur felis eget, blandit nulla. Vivamus imperdiet lacinia enim, id consectetur mi lobortis
+      id.
+    </p>
+    <p>
+      Cras eget scelerisque est. Etiam laoreet nisi libero, non imperdiet enim auctor feugiat. Pellentesque
+      feugiat
+      nec purus nec rhoncus. Fusce blandit, quam sit amet mattis commodo, magna enim viverra ipsum, vel
+      placerat
+      risus
+      urna commodo leo. Maecenas et quam libero. Nullam ullamcorper in lorem quis viverra. Nullam suscipit
+      lectus
+      et
+      ante auctor, in congue est convallis.
+    </p>
+    <p>
+      Regards, <br>
+      ACT Grants
+    </p>
+  </section>
+  <section id="social">
+    <ul style="list-style: none;">
+      <a href="https://www.linkedin.com/company/act-grants-foundation/">
+        <li><img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAACIklEQVRIS51Vy41UMRCscgJMCCwHOC5EsLMZbAicV+KAtAEsASAhJM6EgDaDmQzgxoHDbAaQgAu17eduv89o4V3mzXO7q6ur2iYBCPb4W/l77lmEtg/jT8lpn/4pW8y9hRMTch6krBcgMslTDdxiNkIRap2IOyYGLVbSZwDvWgUfSd71ahalrwCvtWgKk/QKwM+hX8JzpvQ4qbTay5WkHh806ACmuCtz0VtVEm0bYX2FqBp4i75AuAULyicmvrfGesyWW84rNaxKegkUkX8tW2KUJzHjeyyi7Qq1dABJ+zoWhcEfkt8tPEuvCTxrW8t3Ke8AXgKwPRb3g4mnbqWAEwHqzNXnSHJvi1I+QLhq2hwB3AP4BmBXQ7tw9yQ/RHeHOSiJRoDEvQlUAICrBmxV7kAZgzVjXSfyUHVdzkEDKBU1BoCkDhBNVt5H11nWBzLdTPM5lCBpBCgMIkDLJjww8aY0J+stqK+BzYnkxURt2SIv68gI4BrY3jcmdBjS33ATgCxpuxS9j85gFDkrH+gatAQ+WrGFtrMADBo0iCwVbUYXjRr0BEHeOUAiizQ1tk9yc5GLtimyJYj2qS7j5LIVBo1tYdB1xDEt5qAu1h77qCq7ywz4CQzO23RgQHNSZCCQ6YzI/9WikYGLPBvF6CLBW7TuIvfhvEVLm24f8/FYcV237obF5TMwiKsrkdE2T7k+W2nDJMeLe1ZumEs/Dx1nuwV/AQMtRzH8qZPtAAAAAElFTkSuQmCC"/>
+        </li>
+      </a>
+      <a href="https://twitter.com/actgrants/status/1352542486107803649?s=08">
+        <li><img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAACuklEQVRIS42WMXITQRBF398T2BkZ8gWwOAAlcQJ8A+QTgE9gOSXBnMDWCSAitU1EaBcpVVbAAcwF5lM9O6udlVaFN9iVZkf9u/v/+S2xuYQwLt8FuL9VuxjuyW/yxs2jj9kuDV+UvfWmZ38ewdFOvP3J5EzqKserH0ZsK9i67DQHvQem4GkuMXqnfCu7o50ByD1wb1g10u0wVH7fXS2y7QVwlVfNHfITKIJspxEAU8EBMCsvTyVd73LQ5WTPMTeIO8NJIz2N9r8mP4pLaWL0TeYY8VZVJYMK7BToJ8BEEfw/hNt+AXwHfho+CR6BlaRF+9uuReVLclrLrNVovh27tO5lqWgtaWX7DeYH4pekV06+RbxspKNW7mKgItux/kXSx641dpCcOYlnfQUvp5gDxO9G+pPsIHkm5bDbACI5WeZCjZY9QLoHTTBLREdgCOFzqEfS6zYUpFyBZ1Kzaf1ApqWCC0nL/INeUWdqdFkfVtuRxHlU0SmntGjWSFnQGbi2BDvFegbIKk1eIp+DDjPp1aG30wT0SK64WRaJ9y2qDuymr8kO++kBSpaGw06yXUJOntCqpt5/C541atT6WH8sM0gGqDholeMr0Jmky00FWfvPbFEti5qDSkWhlmMglLXK6+YDYml4aKSNujoOsoq6Cmq9j8s0hReFeo6LIXXYD4ZFo95GXGTak7zlRXZaA2upmWfXrNBLu4LYAIg9172zti6b7Kj2QFLwU05C1djkdC14Bxx1qqn73h79fij17RWtqiqr2HPQwiJugJDbqRqt9wyqOnYQHsG/YqZDsxu0qJzG2q5boND/qF2D5i2S53k2OCe1z6778svAWWDmYV4Dpe3Onb8oJ3JZ2/SQg4qQ7ojXQet+9OSP8FFLsrPr2ir2/TMYBxtZ3ZnnW/OgBxiZNJsB0qloJ93RPvwDOYh2MR/b2ZUAAAAASUVORK5CYII="/>
+        </li>
+      </a>
+      <a href="https://www.instagram.com/actgrants/">
+        <li><img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAACP0lEQVRIS4WWjVXbQBCEv7kGQgl0gKkAp4KQCgIVYDrAFcQdxB0EOnAHMRXEVABpQJN30km+052N3pMtrff2d3bWIrsEOH0I4/RbL6oUc8GpZxHPTtfnhkqNSr9hTMeo6b2djzRGdMysCq0ydiaDs9H1lnON9HxClHSF3V1I+pgO5/3IDtu+BR4MS8EB2EpaR5/ufBuk57x/k73OPghupbDvi9VIw/YK+DkUs2jhHrNAvg8K2wksow3bC8MfwQfwXdJujg3bl8DfUV65gD3wCmwkxWeGJsfbvjC8jzE5pg1rKRzGbGL6wO/CQenlH7AM0r4sUTphe4e5KTPnGfo71vq6L09vNKJphhJ4kRSDKNrYv8cGg5aYLeLLIJyXOQnKr1x1LelpDqbcwfuQTCO6RsGPPUr65lFBm9pBknT2TnDTCH2y1U5qkl6PzR0PDD1NDhJKnsFXvbBRijzqmc5bkCLKiqvioq7zEvEADM0qrrx0ufde/hiCNvPxmWA6Qc++A/+qEFLaO87YgKg30GJkgZ6vJhaYIjwSme1NpII6g3k+ox9/DQq7giiTalGi/HhnXwqegB8VZPNOm3sFxaE8uUsyX0MMiTYeZO7iQOWck73FqV1J2s7JMeexKQO7W4JWmG8ZgKppSw5ewKueRhoUnVeiWDgp+rvIJ4aF4GoYO14TCfa0IenQpNp84dQ9yJfGJ+umivq0fjZon++weoRauJlpnTLbWK8jTMqe5lTQwHXVg9YWK5o2/2NwalhS5P8B6cUYLEr4IwcAAAAASUVORK5CYII="/>
+        </li>
+      </a>
+      <a href="https://www.youtube.com/channel/UCvFCsujJRFnzrK7dQTNoJtA">
+        <li><img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAB6klEQVRIS5VWgVHDMAz89wJkA9gANiCdADagG9ANyghsAN0AJmi7AWzACGWBiLPsxJbtpMV3vbaqrNdLr6jE0iEAsQ4Nkzrk9vJzE0Kdqmj2KiETftuVCjydFDS627fKcREg8goAc7znfoyZ5AA5erIXDCo20TBPvyhRo67ML4tID8EziA7Q190E6pvN0HNT12A4RL8fQHakO4xVmXxFhh7g3nS8EVRNMyjZ3RVJBc0A5APAQ3CykdtBY7gKTO2fJB99+BzAI96PWbTv+ZovNC4mJ+DRkX3JQKpMLZEVIO8ArwPB5abQkX6QpiaLP1PN6vzHC4MMLwQ2AK5SzRv+1NCxRF4dg8ZvHv+D04xih0Q6QF4BPhlZZTisAQYpBGgUagAG6UBsEZg0T2B8jkGVESEybCDYxlkpBacK9EJwhoE3S2Qw30Df5DeAN0bKef6p77/OsUsMFEC+ANzWg9YWrJ1w6yPA0Tn2qiJ1DE3OBs2Wta2uReAdyXUatADgB2M/ajwNVGO48tjtMV/R8WCa7L/oww5YA4h19pM9B5Db5RvgCcDJy9fRHcKyak19Y/fNPa5VQos71ADk62txA01Bk5cPNO4Gezc8KvJFcVnspIJqyRQAo4omtpcAnPExMXOa1X+UmOc/CBbMgD91AvUipdFhqQAAAABJRU5ErkJggg=="/>
+        </li>
+      </a>
+    </ul>
+  </section>
+</main>
 </body>
+
 </html>
