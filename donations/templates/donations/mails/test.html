@@ -1,193 +1,489 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office"
+      xmlns:v="urn:schemas-microsoft-com:vml" style="line-height: inherit;">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Donation for Email</title>
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap"
-        rel="stylesheet"/>
-  <style>
-      body {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          padding: 2rem;
-          background: rgb(0, 173, 239);
-          background: linear-gradient(135deg, rgba(0, 173, 239, 1) 0%, rgba(234, 1, 141, 1) 100%);
-      }
+  <!--[if gte mso 9]>
+  <xml>
+    <o:OfficeDocumentSettings>
+      <o:AllowPNG/>
+      <o:PixelsPerInch>96</o:PixelsPerInch>
+    </o:OfficeDocumentSettings>
+  </xml><![endif]-->
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <meta content="width=device-width" name="viewport">
+  <!--[if !mso]><!-->
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <!--<![endif]-->
+  <title></title>
+  <!--[if !mso]><!-->
+  <!--<![endif]-->
 
-      #main {
-          max-width: 70rem;
-          background: white;
-          padding: 16px;
-          border-radius: 8px;
-      }
+  <style id="media-query" type="text/css">
+      @media (max-width: 520px) {
+          .block-grid,
+          .col {
+              min-width: 320px !important;
+              max-width: 100% !important;
+              display: block !important;
+          }
 
-      #text {
-          margin-left: 4rem;
-          margin-right: 16rem;
-          font-family: 'Open Sans', sans-serif;
-          line-height: 1.6rem;
-      }
+          .block-grid {
+              width: 100% !important;
+          }
 
-      @media only screen and (max-width: 600px) {
-          #text {
-              margin-left: 2rem;
-              margin-right: 2rem;
+          .col {
+              width: 100% !important;
+          }
+
+          .col_cont {
+              margin: 0 auto;
+          }
+
+          img.fullwidth,
+          img.fullwidthOnMobile {
+              max-width: 100% !important;
+          }
+
+          .no-stack .col {
+              min-width: 0 !important;
+              display: table-cell !important;
+          }
+
+          .no-stack.two-up .col {
+              width: 50% !important;
+          }
+
+          .no-stack .col.num2 {
+              width: 16.6% !important;
+          }
+
+          .no-stack .col.num3 {
+              width: 25% !important;
+          }
+
+          .no-stack .col.num4 {
+              width: 33% !important;
+          }
+
+          .no-stack .col.num5 {
+              width: 41.6% !important;
+          }
+
+          .no-stack .col.num6 {
+              width: 50% !important;
+          }
+
+          .no-stack .col.num7 {
+              width: 58.3% !important;
+          }
+
+          .no-stack .col.num8 {
+              width: 66.6% !important;
+          }
+
+          .no-stack .col.num9 {
+              width: 75% !important;
+          }
+
+          .no-stack .col.num10 {
+              width: 83.3% !important;
+          }
+
+          .video-block {
+              max-width: none !important;
+          }
+
+          .mobile_hide {
+              min-height: 0px;
+              max-height: 0px;
+              max-width: 0px;
+              display: none;
+              overflow: hidden;
+              font-size: 0px;
+          }
+
+          .desktop_hide {
+              display: block !important;
+              max-height: none !important;
           }
       }
+  </style>
+  <style id="icon-media-query" type="text/css">
+      @media (max-width: 520px) {
+          .icons-inner {
+              text-align: center;
+          }
 
-      #logo {
-          display: flex;
-          justify-content: flex-end;
-      }
-
-      #logo img {
-          width: 70px;
-          height: 70px;
-          position: relative;
-          top: 5px;
-          right: 18px;
-      }
-
-      #logo p {
-          margin: auto;
-          position: relative;
-          right: 25px;
-          font-family: 'Open Sans', sans-serif;
-      }
-
-      .act-logo-clickable:hover {
-          cursor: pointer;
-          opacity: 0.7;
-          transition: 0.2s ease all;
-      }
-
-      #social ul {
-          display: flex !important;
-      }
-
-      #social li {
-          background: black;
-          border-radius: 50%;
-          margin-right: 8px;
-          width: 32px;
-          height: 32px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          box-shadow: 5px 10px 11px -1px rgba(169, 169, 169, 0.75);
-          -webkit-box-shadow: 5px 10px 11px -1px rgba(169, 169, 169, 0.75);
-          -moz-box-shadow: 5px 10px 11px -1px rgba(169, 169, 169, 0.75);
+          .icons-inner td {
+              margin: 0 auto;
+          }
       }
   </style>
 </head>
+<body
+    style="line-height: inherit; padding: 0;">
+    <div style="margin: 15px; z-index: 1000; background-image: url(https://i.imgur.com/L20hnFD.png)">
+<div
+    style="line-height: inherit; margin: 0; padding: 0; -webkit-text-size-adjust: 100%; background-color: #FFFFFF; border: transparent 30px solid;">
+  <!--[if IE]>
+  <div class="ie-browser"><![endif]-->
+  <table bgcolor="#FFFFFF" cellpadding="0" cellspacing="0" class="nl-container" role="presentation"
+         style="line-height: inherit; table-layout: fixed; vertical-align: top; min-width: 320px; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #FFFFFF; width: 100%;"
+         valign="top" width="100%">
+    <tbody style="line-height: inherit;">
+    <tr style="line-height: inherit; border-collapse: collapse; vertical-align: top;" valign="top">
+      <td style="line-height: inherit; border-collapse: collapse; word-break: break-word; vertical-align: top;"
+          valign="top">
+        <!--[if (mso)|(IE)]>
+        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+          <tr>
+            <td align="center" style="background-color:#FFFFFF"><![endif]-->
+        <div style="line-height: inherit; background-color: transparent;">
+          <div class="block-grid mixed-two-up"
+               style="line-height: inherit; min-width: 320px; max-width: 500px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; Margin: 0 auto; background-color: transparent;">
+            <div
+                style="line-height: inherit; border-collapse: collapse; display: table; width: 100%; background-color: transparent;">
+              <!--[if (mso)|(IE)]>
+              <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:transparent;">
+                <tr>
+                  <td align="center">
+                    <table cellpadding="0" cellspacing="0" border="0" style="width:500px">
+                      <tr class="layout-full-width" style="background-color:transparent"><![endif]-->
+              <!--[if (mso)|(IE)]>
+              <td align="center" width="333"
+                  style="background-color:transparent;width:333px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;"
+                  valign="top">
+                <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr>
+                    <td style="padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bottom:5px;"><![endif]-->
+              <div class="col num8"
+                   style="line-height: inherit; display: table-cell; vertical-align: top; max-width: 320px; min-width: 328px; width: 333px;">
+                <div class="col_cont" style="line-height: inherit; width: 100%;">
+                  <!--[if (!mso)&(!IE)]><!-->
+                  <div
+                      style="line-height: inherit; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent; padding-top: 5px; padding-bottom: 5px; padding-right: 0px; padding-left: 0px;">
+                    <!--<![endif]-->
+                    <div style="line-height: inherit;"></div>
+                    <!--[if (!mso)&(!IE)]><!-->
+                  </div>
+                  <!--<![endif]-->
+                </div>
+              </div>
+              <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+              <!--[if (mso)|(IE)]></td>
+                                  <td align="center" width="166"
+                                      style="background-color:transparent;width:166px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;"
+                                      valign="top">
+                                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                      <tr>
+                                        <td style="padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bottom:5px;">
+              <![endif]-->
+              <div class="col num4"
+                   style="line-height: inherit; display: table-cell; vertical-align: top; max-width: 320px; min-width: 164px; width: 166px;">
+                <div class="col_cont" style="line-height: inherit; width: 100%;">
+                  <!--[if (!mso)&(!IE)]><!-->
+                  <div
+                      style="line-height: inherit; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent; padding-top: 5px; padding-bottom: 5px; padding-right: 0px; padding-left: 0px;">
+                    <!--<![endif]-->
+                    <div align="center" class="img-container center autowidth"
+                         style="line-height: inherit; padding-right: 15px; padding-left: 15px;">
+                      <!--[if mso]>
+                      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                        <tr style="line-height:0px">
+                          <td style="padding-right: 15px;padding-left: 15px;" align="center"><![endif]-->
+                      <div style="font-size: 1px; line-height: 15px;"></div>
+                      <img align="center" border="0" class="center autowidth" src="https://i.imgur.com/r3MlqbT.png"
+                           style="line-height: inherit; text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; width: 100%; max-width: 166px; display: block;"
+                           width="166">
+                      <div style="font-size: 1px; line-height: 15px;"></div>
+                      <!--[if mso]></td></tr></table><![endif]-->
+                    </div>
+                    <!--[if (!mso)&(!IE)]><!-->
+                  </div>
+                  <!--<![endif]-->
+                </div>
+              </div>
+              <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+              <!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
+            </div>
+          </div>
+        </div>
+        <div style="line-height: inherit; background-color: transparent;">
+          <div class="block-grid mixed-two-up"
+               style="line-height: inherit; min-width: 320px; max-width: 500px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; Margin: 0 auto; background-color: transparent;">
+            <div
+                style="line-height: inherit; border-collapse: collapse; display: table; width: 100%; background-color: transparent;">
+              <!--[if (mso)|(IE)]>
+              <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:transparent;">
+                <tr>
+                  <td align="center">
+                    <table cellpadding="0" cellspacing="0" border="0" style="width:500px">
+                      <tr class="layout-full-width" style="background-color:transparent"><![endif]-->
+              <!--[if (mso)|(IE)]>
+              <td align="center" width="416"
+                  style="background-color:transparent;width:416px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;"
+                  valign="top">
+                <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr>
+                    <td style="padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bottom:5px;"><![endif]-->
+              <div class="col num10"
+                   style="line-height: inherit; display: table-cell; vertical-align: top; max-width: 320px; min-width: 410px; width: 416px;">
+                <div class="col_cont" style="line-height: inherit; width: 100%;">
+                  <!--[if (!mso)&(!IE)]><!-->
+                  <div
+                      style="line-height: inherit; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent; padding-top: 5px; padding-bottom: 5px; padding-right: 0px; padding-left: 0px;">
+                    <!--<![endif]-->
+                    <!--[if mso]>
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px; font-family: Arial, sans-serif">
+                    <![endif]-->
+                    <link rel="preconnect" href="https://fonts.gstatic.com">
+                    <link
+                        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap"
+                        rel="stylesheet">
+                    <div
+                        style="color: #555555; font-family: 'Open Sans', sans-serif; line-height: 2; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px;">
+                      <div class="txtTinyMce-wrapper"
+                           style="line-height: 2; font-size: 12px; color: #555555; font-family: 'Open Sans', sans-serif; mso-line-height-alt: 24px;">
+                        <p style="margin: 0; font-size: 14px; line-height: 2; word-break: break-word; mso-line-height-alt: 28px; margin-top: 0; margin-bottom: 0;">
+                          Dear {{ name }},</p>
+                        <p style="margin: 0; font-size: 14px; line-height: 2; word-break: break-word; mso-line-height-alt: 28px; margin-top: 0; margin-bottom: 0;"></p>
+                        <p style="margin: 0; font-size: 14px; line-height: 2; word-break: break-word; mso-line-height-alt: 28px; margin-top: 0; margin-bottom: 0;">
+                          Thank you so much for your incredibly kind donation to ACT Grants.</p>
+                        <p style="margin: 0; font-size: 14px; line-height: 2; word-break: break-word; mso-line-height-alt: 28px; margin-top: 0; margin-bottom: 0;"></p>
+                        <p style="margin: 0; font-size: 14px; line-height: 2; word-break: break-word; mso-line-height-alt: 28px; margin-top: 0; margin-bottom: 0;">
+                          We are facing a health and humanitarian crisis of epic proportions, and this will go a long
+                          way towards helping us tackle the shortage of oxygen supplies, medical manpower, and bed
+                          availability in India right now.</p>
+                        <p style="margin: 0; font-size: 14px; line-height: 2; word-break: break-word; mso-line-height-alt: 28px; margin-top: 0; margin-bottom: 0;"></p>
+                        <p style="margin: 0; font-size: 14px; line-height: 2; word-break: break-word; mso-line-height-alt: 28px; margin-top: 0; margin-bottom: 0;">
+                          We believe there should be oxygen for everyone who needs it - and aim to buy and distribute
+                          50,000 oxygen concentrators by the end of May. We are also deploying other sustainable
+                          solutions, such as PSA oxygen plants with higher flow rates, for Indian hospitals. Next, we
+                          will turn our efforts towards bolstering much-needed medical manpower and bed capacity through
+                          telemedicine &amp; home quarantine solutions. We will also focus on helping scale up
+                          vaccinations over the next two months. We are partnering with the government to support their
+                          efforts in this unprecedented crisis.</p>
+                        <p style="margin: 0; font-size: 14px; line-height: 2; word-break: break-word; mso-line-height-alt: 28px; margin-top: 0; margin-bottom: 0;"></p>
+                        <p style="margin: 0; font-size: 14px; line-height: 2; word-break: break-word; mso-line-height-alt: 28px; margin-top: 0; margin-bottom: 0;">
+                          Your family and friends can also contribute to this cause. Please ask them to click here to
+                          make a donation and help India’s fight against COVID-19. They can know more about the work
+                          done by ACT Grants in 2020, here. We look forward to updating you on our progress in the
+                          battle against COVID-19 in India.</p>
+                        <p style="margin: 0; font-size: 14px; line-height: 2; word-break: break-word; mso-line-height-alt: 28px; margin-top: 0; margin-bottom: 0;">
+                          <br style="line-height: inherit;">Thank you for joining us to become a co-founder of hope and
+                          change.</p>
+                        <p style="margin: 0; font-size: 14px; line-height: 2; word-break: break-word; mso-line-height-alt: 28px; margin-top: 0; margin-bottom: 0;"></p>
+                        <p style="margin: 0; font-size: 14px; line-height: 2; word-break: break-word; mso-line-height-alt: 28px; margin-top: 0; margin-bottom: 0;">
+                          With gratitude,</p>
+                        <p style="margin: 0; font-size: 14px; line-height: 2; word-break: break-word; mso-line-height-alt: 28px; margin-top: 0; margin-bottom: 0;">
+                          ACT Grants</p>
+                      </div>
+                    </div>
+                    <!--[if mso]></td></tr></table><![endif]-->
+                    <!--[if (!mso)&(!IE)]><!-->
+                  </div>
+                  <!--<![endif]-->
+                </div>
+              </div>
+              <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+              <!--[if (mso)|(IE)]></td>
+                                  <td align="center" width="83"
+                                      style="background-color:transparent;width:83px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;"
+                                      valign="top">
+                                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                      <tr>
+                                        <td style="padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bottom:5px;">
+              <![endif]-->
+              <div class="col num2"
+                   style="line-height: inherit; display: table-cell; vertical-align: top; max-width: 320px; min-width: 82px; width: 83px;">
+                <div class="col_cont" style="line-height: inherit; width: 100%;">
+                  <!--[if (!mso)&(!IE)]><!-->
+                  <div
+                      style="line-height: inherit; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent; padding-top: 5px; padding-bottom: 5px; padding-right: 0px; padding-left: 0px;">
+                    <!--<![endif]-->
+                    <div style="line-height: inherit;"></div>
+                    <!--[if (!mso)&(!IE)]><!-->
+                  </div>
+                  <!--<![endif]-->
+                </div>
+              </div>
+              <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+              <!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
+            </div>
+          </div>
+        </div>
+        <div style="line-height: inherit; background-color: transparent;">
+          <div class="block-grid two-up"
+               style="line-height: inherit; min-width: 320px; max-width: 500px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; Margin: 0 auto; background-color: transparent;">
+            <div
+                style="line-height: inherit; border-collapse: collapse; display: table; width: 100%; background-color: transparent;">
+              <!--[if (mso)|(IE)]>
+              <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:transparent;">
+                <tr>
+                  <td align="center">
+                    <table cellpadding="0" cellspacing="0" border="0" style="width:500px">
+                      <tr class="layout-full-width" style="background-color:transparent"><![endif]-->
+              <!--[if (mso)|(IE)]>
+              <td align="center" width="250"
+                  style="background-color:transparent;width:250px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;"
+                  valign="top">
+                <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr>
+                    <td style="padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bottom:5px;"><![endif]-->
+              <div class="col num6"
+                   style="line-height: inherit; display: table-cell; vertical-align: top; max-width: 320px; min-width: 246px; width: 250px;">
+                <div class="col_cont" style="line-height: inherit; width: 100%;">
+                  <!--[if (!mso)&(!IE)]><!-->
+                  <div
+                      style="line-height: inherit; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent; padding-top: 5px; padding-bottom: 5px; padding-right: 0px; padding-left: 0px;">
+                    <!--<![endif]-->
+                    <table cellpadding="0" cellspacing="0" class="social_icons" role="presentation"
+                           style="line-height: inherit; table-layout: fixed; vertical-align: top; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"
+                           valign="top" width="100%">
+                      <tbody style="line-height: inherit;">
+                      <tr style="line-height: inherit; border-collapse: collapse; vertical-align: top;" valign="top">
+                        <td style="line-height: inherit; border-collapse: collapse; word-break: break-word; vertical-align: top; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px;"
+                            valign="top">
+                          <table align="left" cellpadding="0" cellspacing="0" class="social_table" role="presentation"
+                                 style="line-height: inherit; table-layout: fixed; vertical-align: top; border-spacing: 0; border-collapse: collapse; mso-table-tspace: 0; mso-table-rspace: 0; mso-table-bspace: 0; mso-table-lspace: 0;"
+                                 valign="top">
+                            <tbody style="line-height: inherit;">
+                            <tr align="left"
+                                style="line-height: inherit; border-collapse: collapse; vertical-align: top; display: inline-block; text-align: left;"
+                                valign="top">
+                              <td style="line-height: inherit; border-collapse: collapse; word-break: break-word; vertical-align: top; padding-bottom: 0; padding-right: 4px; padding-left: 0px;"
+                                  valign="top"><a href="https://instagram.com/" target="_blank"
+                                                  style="line-height: inherit;"><img alt="Instagram" height="32"
+                                                                                     src="https://i.imgur.com/ad22Ivd.png"
+                                                                                     style="line-height: inherit; text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; display: block;"
+                                                                                     title="Instagram" width="32"></a>
+                              </td>
+                              <td style="line-height: inherit; border-collapse: collapse; word-break: break-word; vertical-align: top; padding-bottom: 0; padding-right: 4px; padding-left: 0px;"
+                                  valign="top"><a href="https://www.linkedin.com/" target="_blank"
+                                                  style="line-height: inherit;"><img alt="LinkedIn" height="32"
+                                                                                     src="https://i.imgur.com/jxHlhAx.png"
+                                                                                     style="line-height: inherit; text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; display: block;"
+                                                                                     title="LinkedIn" width="32"></a>
+                              </td>
+                              <td style="line-height: inherit; border-collapse: collapse; word-break: break-word; vertical-align: top; padding-bottom: 0; padding-right: 4px; padding-left: 0px;"
+                                  valign="top"><a href="https://twitter.com/" target="_blank"
+                                                  style="line-height: inherit;"><img alt="Twitter" height="32"
+                                                                                     src="https://i.imgur.com/WlaubfC.png"
+                                                                                     style="line-height: inherit; text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; display: block;"
+                                                                                     title="Twitter" width="32"></a>
+                              </td>
+                              <td style="line-height: inherit; border-collapse: collapse; word-break: break-word; vertical-align: top; padding-bottom: 0; padding-right: 4px; padding-left: 0px;"
+                                  valign="top"><a href="https://www.youtube.com/" target="_blank"
+                                                  style="line-height: inherit;"><img alt="YouTube" height="32"
+                                                                                     src="https://i.imgur.com/CeYO8dR.png"
+                                                                                     style="line-height: inherit; text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; display: block;"
+                                                                                     title="YouTube" width="32"></a>
+                              </td>
+                            </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                      </tbody>
+                    </table>
+                    <!--[if (!mso)&(!IE)]><!-->
+                  </div>
+                  <!--<![endif]-->
+                </div>
+              </div>
+              <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+              <!--[if (mso)|(IE)]></td>
+                                  <td align="center" width="250"
+                                      style="background-color:transparent;width:250px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;"
+                                      valign="top">
+                                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                      <tr>
+                                        <td style="padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bottom:5px;">
+              <![endif]-->
+              <div class="col num6"
+                   style="line-height: inherit; display: table-cell; vertical-align: top; max-width: 320px; min-width: 246px; width: 250px;">
+                <div class="col_cont" style="line-height: inherit; width: 100%;">
+                  <!--[if (!mso)&(!IE)]><!-->
+                  <div
+                      style="line-height: inherit; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent; padding-top: 5px; padding-bottom: 5px; padding-right: 0px; padding-left: 0px;">
+                    <!--<![endif]-->
+                    <div style="line-height: inherit;"></div>
+                    <!--[if (!mso)&(!IE)]><!-->
+                  </div>
+                  <!--<![endif]-->
+                </div>
+              </div>
+              <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+              <!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
+            </div>
+          </div>
+        </div>
+        <div style="line-height: inherit; background-color: transparent;">
+          <div class="block-grid"
+               style="line-height: inherit; min-width: 320px; max-width: 500px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; Margin: 0 auto; background-color: transparent;">
+            <div
+                style="line-height: inherit; border-collapse: collapse; display: table; width: 100%; background-color: transparent;">
+              <!--[if (mso)|(IE)]>
+              <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:transparent;">
+                <tr>
+                  <td align="center">
+                    <table cellpadding="0" cellspacing="0" border="0" style="width:500px">
+                      <tr class="layout-full-width" style="background-color:transparent"><![endif]-->
+              <!--[if (mso)|(IE)]>
+              <td align="center" width="500"
+                  style="background-color:transparent;width:500px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;"
+                  valign="top">
+                <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr>
+                    <td style="padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bottom:5px;"><![endif]-->
+              <div class="col num12"
+                   style="line-height: inherit; min-width: 320px; max-width: 500px; display: table-cell; vertical-align: top; width: 500px;">
+                <div class="col_cont" style="line-height: inherit; width: 100%;">
+                  <!--[if (!mso)&(!IE)]><!-->
+                  <div
+                      style="line-height: inherit; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent; padding-top: 5px; padding-bottom: 5px; padding-right: 0px; padding-left: 0px;">
+                    <!--<![endif]-->
+                    <table cellpadding="0" cellspacing="0" role="presentation"
+                           style="line-height: inherit; table-layout: fixed; vertical-align: top; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"
+                           valign="top" width="100%">
+                      <tr style="line-height: inherit; border-collapse: collapse; vertical-align: top;" valign="top">
+                        <td align="center"
+                            style="line-height: inherit; border-collapse: collapse; word-break: break-word; vertical-align: top; padding-top: 5px; padding-right: 0px; padding-bottom: 5px; padding-left: 0px; text-align: center;"
+                            valign="top">
+                          <!--[if vml]>
+                          <table align="left" cellpadding="0" cellspacing="0" role="presentation"
+                                 style="display:inline-block;padding-left:0px;padding-right:0px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                          <![endif]-->
+                          <!--[if !vml]><!-->
+                          <table cellpadding="0" cellspacing="0" class="icons-inner" role="presentation"
+                                 style="line-height: inherit; table-layout: fixed; vertical-align: top; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; display: inline-block; margin-right: -4px; padding-left: 0px; padding-right: 0px;"
+                                 valign="top">
 
-<body>
-<main id="main">
-  <section id="logo">
-    <div class="act-logo-clickable">
-      <img src="https://actgrants.in/wp-content/uploads/2021/02/ACT-Logo.png">
-      <p>actgrants.in</p>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                    <!--[if (!mso)&(!IE)]><!-->
+                  </div>
+                  <!--<![endif]-->
+                </div>
+              </div>
+              <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+              <!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
+            </div>
+          </div>
+        </div>
+        <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <!--[if (IE)]></div><![endif]-->
+</div>
     </div>
-  </section>
-  <section id="text">
-    <p>Dear {{ name }}, </p>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce arcu justo, accumsan nec mauris vitae,
-      elementum
-      feugiat leo. Praesent porttitor a lectus varius fermentum. Curabitur ex diam, malesuada vel suscipit
-      vitae,
-      finibus vel ipsum. Integer elit odio, tincidunt in tempus vel, aliquet ac augue. Vivamus non odio orci.
-      Quisque
-      et lectus et elit tempor feugiat. Nunc porttitor molestie lorem a cursus. Suspendisse dolor odio, mattis
-      semper
-      nisi vitae, tristique porta eros. Nulla egestas tincidunt metus in cursus. Sed ultricies semper ipsum,
-      vel
-      tristique diam pharetra elementum. Nunc tempus iaculis mi sed ullamcorper.
-    </p>
-    <p>
-      Aenean posuere ipsum ac ipsum euismod, sit amet commodo nunc molestie. Nullam facilisis blandit tellus,
-      posuere
-      tincidunt orci pharetra sed. Praesent nunc metus, convallis eu malesuada consequat, tristique suscipit
-      purus.
-      Quisque quis dictum mi, in dapibus nisi. Integer placerat nisl id est condimentum fermentum. Duis
-      vehicula
-      egestas tincidunt. Vestibulum imperdiet sodales risus, eget viverra erat vulputate vitae. Phasellus nisl
-      enim,
-      euismod et blandit et, mollis ut nisl. Nunc luctus sit amet arcu eget pulvinar. In pellentesque in risus
-      ut
-      volutpat. Sed vel ex sit amet enim rutrum bibendum.
-    </p>
-    <p>
-      Nulla purus dui, dignissim vel dui porttitor, tincidunt elementum enim. Vivamus vestibulum eu dolor et
-      tincidunt. Aliquam cursus sem quis lacus commodo cursus. Aenean a bibendum ipsum. Mauris tristique quam
-      quis
-      est
-      maximus sollicitudin. Proin iaculis tellus at orci ultricies condimentum. Donec sed facilisis lorem.
-      Curabitur
-      ultrices, ex a suscipit molestie, dolor orci laoreet purus, a laoreet turpis lorem eu elit. Aliquam ac
-      sollicitudin diam, at pharetra nunc. Mauris at lorem vitae est ullamcorper interdum sed ac nulla.
-      Integer
-      hendrerit lobortis tempus.
-    </p>
-    <p>
-      Fusce ullamcorper mauris ac risus tincidunt faucibus. Praesent hendrerit erat vel dignissim condimentum.
-      Vivamus
-      ultricies et enim sit amet venenatis. Quisque faucibus imperdiet vestibulum. In vestibulum molestie dui
-      nec
-      suscipit. Mauris rutrum, ligula non convallis consectetur, massa purus ornare nisl, ac feugiat dolor
-      urna
-      volutpat mi. Nunc volutpat rhoncus nulla quis sodales. Phasellus porta dignissim tristique. Donec et
-      elit
-      sodales, efficitur felis eget, blandit nulla. Vivamus imperdiet lacinia enim, id consectetur mi lobortis
-      id.
-    </p>
-    <p>
-      Cras eget scelerisque est. Etiam laoreet nisi libero, non imperdiet enim auctor feugiat. Pellentesque
-      feugiat
-      nec purus nec rhoncus. Fusce blandit, quam sit amet mattis commodo, magna enim viverra ipsum, vel
-      placerat
-      risus
-      urna commodo leo. Maecenas et quam libero. Nullam ullamcorper in lorem quis viverra. Nullam suscipit
-      lectus
-      et
-      ante auctor, in congue est convallis.
-    </p>
-    <p>
-      Regards, <br>
-      ACT Grants
-    </p>
-  </section>
-  <section id="social">
-    <ul style="list-style: none;">
-      <a href="https://www.linkedin.com/company/act-grants-foundation/">
-        <li><img
-            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAACIklEQVRIS51Vy41UMRCscgJMCCwHOC5EsLMZbAicV+KAtAEsASAhJM6EgDaDmQzgxoHDbAaQgAu17eduv89o4V3mzXO7q6ur2iYBCPb4W/l77lmEtg/jT8lpn/4pW8y9hRMTch6krBcgMslTDdxiNkIRap2IOyYGLVbSZwDvWgUfSd71ahalrwCvtWgKk/QKwM+hX8JzpvQ4qbTay5WkHh806ACmuCtz0VtVEm0bYX2FqBp4i75AuAULyicmvrfGesyWW84rNaxKegkUkX8tW2KUJzHjeyyi7Qq1dABJ+zoWhcEfkt8tPEuvCTxrW8t3Ke8AXgKwPRb3g4mnbqWAEwHqzNXnSHJvi1I+QLhq2hwB3AP4BmBXQ7tw9yQ/RHeHOSiJRoDEvQlUAICrBmxV7kAZgzVjXSfyUHVdzkEDKBU1BoCkDhBNVt5H11nWBzLdTPM5lCBpBCgMIkDLJjww8aY0J+stqK+BzYnkxURt2SIv68gI4BrY3jcmdBjS33ATgCxpuxS9j85gFDkrH+gatAQ+WrGFtrMADBo0iCwVbUYXjRr0BEHeOUAiizQ1tk9yc5GLtimyJYj2qS7j5LIVBo1tYdB1xDEt5qAu1h77qCq7ywz4CQzO23RgQHNSZCCQ6YzI/9WikYGLPBvF6CLBW7TuIvfhvEVLm24f8/FYcV237obF5TMwiKsrkdE2T7k+W2nDJMeLe1ZumEs/Dx1nuwV/AQMtRzH8qZPtAAAAAElFTkSuQmCC"/>
-        </li>
-      </a>
-      <a href="https://twitter.com/actgrants/status/1352542486107803649?s=08">
-        <li><img
-            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAACuklEQVRIS42WMXITQRBF398T2BkZ8gWwOAAlcQJ8A+QTgE9gOSXBnMDWCSAitU1EaBcpVVbAAcwF5lM9O6udlVaFN9iVZkf9u/v/+S2xuYQwLt8FuL9VuxjuyW/yxs2jj9kuDV+UvfWmZ38ewdFOvP3J5EzqKserH0ZsK9i67DQHvQem4GkuMXqnfCu7o50ByD1wb1g10u0wVH7fXS2y7QVwlVfNHfITKIJspxEAU8EBMCsvTyVd73LQ5WTPMTeIO8NJIz2N9r8mP4pLaWL0TeYY8VZVJYMK7BToJ8BEEfw/hNt+AXwHfho+CR6BlaRF+9uuReVLclrLrNVovh27tO5lqWgtaWX7DeYH4pekV06+RbxspKNW7mKgItux/kXSx641dpCcOYlnfQUvp5gDxO9G+pPsIHkm5bDbACI5WeZCjZY9QLoHTTBLREdgCOFzqEfS6zYUpFyBZ1Kzaf1ApqWCC0nL/INeUWdqdFkfVtuRxHlU0SmntGjWSFnQGbi2BDvFegbIKk1eIp+DDjPp1aG30wT0SK64WRaJ9y2qDuymr8kO++kBSpaGw06yXUJOntCqpt5/C541atT6WH8sM0gGqDholeMr0Jmky00FWfvPbFEti5qDSkWhlmMglLXK6+YDYml4aKSNujoOsoq6Cmq9j8s0hReFeo6LIXXYD4ZFo95GXGTak7zlRXZaA2upmWfXrNBLu4LYAIg9172zti6b7Kj2QFLwU05C1djkdC14Bxx1qqn73h79fij17RWtqiqr2HPQwiJugJDbqRqt9wyqOnYQHsG/YqZDsxu0qJzG2q5boND/qF2D5i2S53k2OCe1z6778svAWWDmYV4Dpe3Onb8oJ3JZ2/SQg4qQ7ojXQet+9OSP8FFLsrPr2ir2/TMYBxtZ3ZnnW/OgBxiZNJsB0qloJ93RPvwDOYh2MR/b2ZUAAAAASUVORK5CYII="/>
-        </li>
-      </a>
-      <a href="https://www.instagram.com/actgrants/">
-        <li><img
-            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAACP0lEQVRIS4WWjVXbQBCEv7kGQgl0gKkAp4KQCgIVYDrAFcQdxB0EOnAHMRXEVABpQJN30km+052N3pMtrff2d3bWIrsEOH0I4/RbL6oUc8GpZxHPTtfnhkqNSr9hTMeo6b2djzRGdMysCq0ydiaDs9H1lnON9HxClHSF3V1I+pgO5/3IDtu+BR4MS8EB2EpaR5/ufBuk57x/k73OPghupbDvi9VIw/YK+DkUs2jhHrNAvg8K2wksow3bC8MfwQfwXdJujg3bl8DfUV65gD3wCmwkxWeGJsfbvjC8jzE5pg1rKRzGbGL6wO/CQenlH7AM0r4sUTphe4e5KTPnGfo71vq6L09vNKJphhJ4kRSDKNrYv8cGg5aYLeLLIJyXOQnKr1x1LelpDqbcwfuQTCO6RsGPPUr65lFBm9pBknT2TnDTCH2y1U5qkl6PzR0PDD1NDhJKnsFXvbBRijzqmc5bkCLKiqvioq7zEvEADM0qrrx0ufde/hiCNvPxmWA6Qc++A/+qEFLaO87YgKg30GJkgZ6vJhaYIjwSme1NpII6g3k+ox9/DQq7giiTalGi/HhnXwqegB8VZPNOm3sFxaE8uUsyX0MMiTYeZO7iQOWck73FqV1J2s7JMeexKQO7W4JWmG8ZgKppSw5ewKueRhoUnVeiWDgp+rvIJ4aF4GoYO14TCfa0IenQpNp84dQ9yJfGJ+umivq0fjZon++weoRauJlpnTLbWK8jTMqe5lTQwHXVg9YWK5o2/2NwalhS5P8B6cUYLEr4IwcAAAAASUVORK5CYII="/>
-        </li>
-      </a>
-      <a href="https://www.youtube.com/channel/UCvFCsujJRFnzrK7dQTNoJtA">
-        <li><img
-            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAB6klEQVRIS5VWgVHDMAz89wJkA9gANiCdADagG9ANyghsAN0AJmi7AWzACGWBiLPsxJbtpMV3vbaqrNdLr6jE0iEAsQ4Nkzrk9vJzE0Kdqmj2KiETftuVCjydFDS627fKcREg8goAc7znfoyZ5AA5erIXDCo20TBPvyhRo67ML4tID8EziA7Q190E6pvN0HNT12A4RL8fQHakO4xVmXxFhh7g3nS8EVRNMyjZ3RVJBc0A5APAQ3CykdtBY7gKTO2fJB99+BzAI96PWbTv+ZovNC4mJ+DRkX3JQKpMLZEVIO8ArwPB5abQkX6QpiaLP1PN6vzHC4MMLwQ2AK5SzRv+1NCxRF4dg8ZvHv+D04xih0Q6QF4BPhlZZTisAQYpBGgUagAG6UBsEZg0T2B8jkGVESEybCDYxlkpBacK9EJwhoE3S2Qw30Df5DeAN0bKef6p77/OsUsMFEC+ANzWg9YWrJ1w6yPA0Tn2qiJ1DE3OBs2Wta2uReAdyXUatADgB2M/ajwNVGO48tjtMV/R8WCa7L/oww5YA4h19pM9B5Db5RvgCcDJy9fRHcKyak19Y/fNPa5VQos71ADk62txA01Bk5cPNO4Gezc8KvJFcVnspIJqyRQAo4omtpcAnPExMXOa1X+UmOc/CBbMgD91AvUipdFhqQAAAABJRU5ErkJggg=="/>
-        </li>
-      </a>
-    </ul>
-  </section>
-</main>
 </body>
-
 </html>
