@@ -23,3 +23,16 @@ class Donation(models.Model):
 
 	def __str__(self):
 		return f"Donation - {self.amount}"
+
+
+class Company(models.Model):
+	class Meta:
+		verbose_name_plural = 'Companies'
+	name = models.CharField(max_length=128)
+	logo = models.URLField(null=True)
+	goal = models.IntegerField()
+	active = models.BooleanField(default=True)
+	created_at = models.DateTimeField(default=timezone.now)
+
+	def __str__(self):
+		return f"Company - {self.name}"

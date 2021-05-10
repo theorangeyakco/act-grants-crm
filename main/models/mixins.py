@@ -5,7 +5,6 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 from backend.media_storages import PrivateMediaStorage
 
-
 class UserData(models.Model):
 	NOTIFICATION_LEVEL_CHOICES = [
 		(0, 'Disable All Notifications'),
@@ -24,6 +23,7 @@ class UserData(models.Model):
 	avatar = models.ImageField(storage=PrivateMediaStorage(),
 	                           upload_to='user_data/avatars',
 	                           null=True, blank=True)
+	company = models.ForeignKey('donations.Company', on_delete=models.CASCADE, null=True)
 
 	# setting 5 levels of notifications <0 - 4>
 	# 0 is disabled to 4 is all notifications

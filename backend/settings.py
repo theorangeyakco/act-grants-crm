@@ -159,6 +159,15 @@ INSTALLED_APPS = [
 	'django.contrib.sitemaps',
 	'django.contrib.humanize',
 
+	# Allauth apps
+	'allauth',
+	'allauth.account',
+	'allauth.socialaccount',
+	'allauth.socialaccount.providers.google',
+	'allauth.socialaccount.providers.facebook',
+	# 'allauth.socialaccount.providers.microsoft',
+	# 'allauth.socialaccount.providers.twitter',
+
 	# Installed Apps
 	# 'storages',
 	# 'phonenumber_field',
@@ -227,6 +236,28 @@ AUTH_PASSWORD_VALIDATORS = [
 	{'NAME':
 		 'django.contrib.auth.password_validation.NumericPasswordValidator'}
 ]
+
+REST_FRAMEWORK = {
+	'DEFAULT_AUTHENTICATION_CLASSES': [
+		# 'rest_framework.authentication.BasicAuthentication',
+		'rest_framework.authentication.SessionAuthentication',
+	],
+
+	'DEFAULT_RENDERER_CLASSES': [
+		'rest_framework.renderers.JSONRenderer',
+		'rest_framework.renderers.BrowsableAPIRenderer',
+	],
+
+	'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+	'PAGE_SIZE'               : 100,
+
+	'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+
+}
+
+REST_AUTH_SERIALIZERS = {
+    'USER_DETAILS_SERIALIZER': 'main.serializers.UserSerializer',
+}
 
 # External Application Settings
 

@@ -21,6 +21,9 @@ from django.views.generic import TemplateView
 urlpatterns = [
     path('admin_tools/', include('admin_tools.urls')),
     path('admin/', admin.site.urls),
+    url(r'^rest-auth/', include('rest_auth.urls')),
+    url(r'^rest-auth/registration/', include('rest_auth.registration.urls')),
+    url(r'^', include('django.contrib.auth.urls')),
     # re_path(r'^ckeditor/', include('ckeditor_uploader.urls')),
     # path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
     # path('auth', include('main.urls')),
