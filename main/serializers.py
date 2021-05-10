@@ -9,7 +9,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 		super(UserSerializer, self).__init__(*args, **kwargs)
 
 	company = CompanySerializer()
-	
+
 	class Meta:
 		model = User
 		fields = ['username', 'email', 'phone', 'avatar', 'name', 'first_name', 'last_name', 'company']

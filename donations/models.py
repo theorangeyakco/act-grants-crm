@@ -19,6 +19,7 @@ class Donation(models.Model):
 	rzp_response = JSONField()
 	rzp_payment_id = models.CharField(max_length=32)
 	currency = models.CharField(max_length=5)
+	company = models.ForeignKey('Company', on_delete=models.SET_NULL, null=True, blank=True)
 	created_at = models.DateTimeField(default=timezone.now)
 
 	def __str__(self):
@@ -28,11 +29,20 @@ class Donation(models.Model):
 class Company(models.Model):
 	class Meta:
 		verbose_name_plural = 'Companies'
+
 	name = models.CharField(max_length=128)
+	slug = models.SlugField(max_length=128)
 	logo = models.URLField(null=True)
 	goal = models.IntegerField()
 	active = models.BooleanField(default=True)
+	domains = models.ManyToManyField('Domain')
 	created_at = models.DateTimeField(default=timezone.now)
 
 	def __str__(self):
 		return f"Company - {self.name}"
+
+class Domain(models.Model):
+	name = models.CharField(max_length=128)
+
+	def __str__(self):
+		return f"{self.name}"

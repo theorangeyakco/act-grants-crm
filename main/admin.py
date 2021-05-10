@@ -5,7 +5,7 @@ from main.models import User
 
 
 class UserAdmin(BaseUserAdmin):
-	list_display = ('name', 'phone', 'email', 'name', 'date_joined', 'is_staff')
+	list_display = ('username', 'name', 'phone', 'email', 'name', 'date_joined', 'is_staff')
 	list_filter = ('is_staff', 'is_active')
 	fieldsets = (
 		(None, {'fields': ('email', 'password')}),
