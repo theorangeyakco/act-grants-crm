@@ -101,7 +101,7 @@ class AcceptTestWebhook(APIView):
 				print("An exception occurred: {}".format(error.text))
 
 			html_message = render_to_string('donations/mails/test.html', {'name': donor.get('name')})
-			email_subject = 'Test Subject'
+			email_subject = 'T'
 			try:
 				mailchimp = MailchimpTransactional.Client(os.getenv('MANDRILL_API_KEY'))
 				response = mailchimp.messages.send({"message": {'html': html_message, 'subject': email_subject,
