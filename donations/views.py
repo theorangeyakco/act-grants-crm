@@ -163,6 +163,6 @@ class GetDonationStatistics(APIView):
 			else:
 				values.append(s)
 		stats = {'total': queryset.aggregate(Sum('amount')),
-		         'daily': {'day': [d.strftime("%d/%m/%y") for d in days], 'values': [values]},
+		         'daily': {'day': [d.strftime("%d/%m/%y") for d in days], 'values': values},
 		         'count': queryset.aggregate(Count('amount'))}
 		return Response(stats, status=200)
