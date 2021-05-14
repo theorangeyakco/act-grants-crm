@@ -14,4 +14,4 @@ class DonationSerializer(serializers.ModelSerializer):
 		model = Donation
 		fields = ['amount', 'domestic', 'international', 'donor_name',
 		          'donor_email', 'donor_phone', 'donor_pan', 'donor_country',
-		          'donor_address', 'donor_zipcode', 'payment_time', 'currency']
+		          'donor_address', 'donor_zipcode', 'payment_time', 'currency', 'meta']

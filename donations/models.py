@@ -16,6 +16,7 @@ class Donation(models.Model):
 	donor_country = models.CharField(max_length=32)
 	donor_zipcode = models.CharField(max_length=16, null=True, blank=True)
 	payment_time = models.DateTimeField()
+	meta = JSONField(null=True)
 	rzp_response = JSONField()
 	rzp_payment_id = models.CharField(max_length=32)
 	currency = models.CharField(max_length=5)
@@ -35,7 +36,8 @@ class Company(models.Model):
 	logo = models.URLField(null=True)
 	goal = models.IntegerField()
 	active = models.BooleanField(default=True)
-	domains = models.ManyToManyField('Domain')
+	rzp_identifier_key = models.CharField(max_length=128)
+	rzp_identifier_value = models.CharField(max_length=128, null=True)
 	created_at = models.DateTimeField(default=timezone.now)
 
 	def __str__(self):
