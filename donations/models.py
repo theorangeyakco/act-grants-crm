@@ -30,6 +30,7 @@ class Donation(models.Model):
 class Company(models.Model):
 	class Meta:
 		verbose_name_plural = 'Companies'
+		unique_together = [('rzp_identifier_key', 'rzp_identifier_value')]
 
 	name = models.CharField(max_length=128)
 	slug = models.SlugField(max_length=128)

@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from donations.models import Donation
-from donations.utils import get_company_from_notes
+from donations.utils import get_company_from_notes, add_contact_to_hubspot
 
 
 class AcceptDomesticWebhook(APIView):
@@ -44,10 +44,8 @@ class AcceptDomesticWebhook(APIView):
 					meta=notes
 			)
 			d.save()
+			add_contact_to_hubspot(d.donor_name, d.donor_phone, d.donor_email, 'Razorpay International', d.success)
 
-			if d.success:
-				pass
-				# TODO: Add contact in hubspot
 		return Response(200)
 
 
@@ -77,8 +75,6 @@ class AcceptInternationalWebhook(APIView):
 					meta=notes
 			)
 			d.save()
-			if d.success:
-				pass
-				# TODO: Add contact in hubspot
+			add_contact_to_hubspot(d.donor_name, d.donor_phone, d.donor_email, 'Razorpay International', d.success)
 
 		return Response()
