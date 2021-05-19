@@ -34,3 +34,7 @@ def get_company_from_notes(notes: dict) -> Union[Company, None]:
 		if len(c) == 1:
 			return c[0]
 	return None
+
+
+def add_contact_to_hubspot(name, phone, email):
+	pass
