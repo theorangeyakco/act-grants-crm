@@ -1,4 +1,9 @@
+import json
+import os
 from typing import Union
+
+import requests
+
 from donations.models import Company
 
 
@@ -34,3 +39,27 @@ def get_company_from_notes(notes: dict) -> Union[Company, None]:
 		if len(c) == 1:
 			return c[0]
 	return None
+
+
+def add_contact_to_hubspot(name: str, phone: str, email: str, act_donor_source: str, act_donated: bool):
+	url = f"https://api.hubapi.com/contacts/v1/contact/?hapikey={os.environ.get('HUBSPOT_API_KEY')}"
+	headers = {"Content-Type": "application/json"}
+	payload = {
+		"properties": [
+			{"property": "firstname", "value": name.split()[0].strip()},
+			{"property": "lastname", "value": name.strip().split()[-1]},
+			{"property": "email", "value": email},
+			{"property": "phone", "value": phone},
+			{"property": "act_donor_source", "value": act_donor_source},
+			{"property": "act_donated", "value": act_donated},
+		]
+	}
+	response = requests.post(url=url, data=json.dumps(payload), headers=headers)
+	print(response.text)
+	if response.status_code >= 300:
+		print(response.text)
+		if json.loads(response.text)["error"] == "CONTACT_EXISTS":
+			return
+		raise Exception("Hubspot contact creation failed")
+
+	return
