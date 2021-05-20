@@ -37,6 +37,7 @@ class Company(models.Model):
 	logo = models.URLField(null=True)
 	goal = models.IntegerField()
 	active = models.BooleanField(default=True)
+	dr_code = models.CharField(max_length=10)
 	rzp_identifier_key = models.CharField(max_length=128)
 	rzp_identifier_value = models.CharField(max_length=128, null=True)
 	created_at = models.DateTimeField(default=timezone.now)
