@@ -46,18 +46,20 @@ def add_contact_to_hubspot(name: str, phone: str, email: str, act_donor_source: 
 	headers = {"Content-Type": "application/json"}
 	payload = {
 		"properties": [
-			{"property": "firstname", "value": name.strip().split()[0]},
-			{"property": "lastname", "value": name.strip().split()[1]},
+			{"property": "firstname", "value": name.split()[0].strip()},
+			{"property": "lastname", "value": name.strip().split()[-1]},
 			{"property": "email", "value": email},
 			{"property": "phone", "value": phone},
 			{"property": "act_donor_source", "value": act_donor_source},
-			{"property": "act_donated", "value": act_donated}
+			{"property": "act_donated", "value": act_donated},
 		]
 	}
 	response = requests.post(url=url, data=json.dumps(payload), headers=headers)
 	print(response.text)
-
-	if 200 <= response.status_code < 300:
-		return
-	else:
+	if response.status_code >= 300:
+		print(response.text)
+		if json.loads(response.text)["error"] == "CONTACT_EXISTS":
+			return
 		raise Exception("Hubspot contact creation failed")
+
+	return

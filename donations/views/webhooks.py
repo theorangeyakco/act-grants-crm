@@ -35,7 +35,7 @@ class AcceptDomesticWebhook(APIView):
 					donor_pan=notes.pop('pan_number').upper(),
 					donor_address=notes.pop('address'),
 					donor_phone=notes.pop('phone'),
-					donor_country="India", # TODO support international payments
+					donor_country="India",
 					payment_time=datetime.fromtimestamp(int(request.data['payload']['payment']['entity']['created_at']),
 					                                    timezone.utc),
 					rzp_response=request.data, domestic=True, international=False,
@@ -72,7 +72,10 @@ class AcceptInternationalWebhook(APIView):
 					                                    timezone.utc),
 					success=payment.get('captured'),
 					company=get_company_from_notes(notes),
-					meta=notes
+					meta=notes,
+					domestic=False,
+					international=True,
+					rzp_response=request.data
 			)
 			d.save()
 			add_contact_to_hubspot(d.donor_name, d.donor_phone, d.donor_email, 'Razorpay International', d.success)
