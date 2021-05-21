@@ -45,7 +45,7 @@ class GetDonationStatistics(APIView):
 		try:
 			end_day = max(queryset_domestic.values_list('payment_time'))[0] + timedelta(days=1)
 		except ValueError:
-			end_day = now().day
+			end_day = now()
 		start_day = end_day - timedelta(days=7)
 		days_domestic = [start_day + timedelta(n)
 		                 for n in range(int((end_day - start_day).days))]
@@ -61,7 +61,7 @@ class GetDonationStatistics(APIView):
 		try:
 			end_day = max(queryset_international.values_list('payment_time'))[0] + timedelta(days=1)
 		except ValueError:
-			end_day = now().day
+			end_day = now()
 		start_day = end_day - timedelta(days=7)
 		days_international = [start_day + timedelta(n)
 		                      for n in range(int((end_day - start_day).days))]
