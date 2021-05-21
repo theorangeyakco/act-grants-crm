@@ -9,17 +9,21 @@ class Donation(models.Model):
 	international = models.BooleanField()
 	success = models.BooleanField()
 	donor_name = models.CharField(max_length=256)
-	donor_email = models.EmailField()
-	donor_phone = models.CharField(max_length=16)
+	donor_email = models.EmailField(null=True)
+	donor_phone = models.CharField(max_length=16, null=True)
 	donor_pan = models.CharField(max_length=16, null=True, blank=True)
-	donor_address = models.CharField(max_length=2048)
-	donor_country = models.CharField(max_length=32)
+	donor_address = models.CharField(max_length=2048, null=True)
+	donor_country = models.CharField(max_length=32, null=True)
 	donor_zipcode = models.CharField(max_length=16, null=True, blank=True)
 	payment_time = models.DateTimeField()
 	meta = JSONField(null=True)
-	rzp_response = JSONField()
-	rzp_payment_id = models.CharField(max_length=32)
-	currency = models.CharField(max_length=5)
+	rzp_response = JSONField(null=True)
+	rzp_payment_id = models.CharField(max_length=32, null=True)
+	source = models.CharField(max_length=16, choices=[('rzp_intl', 'Razorpay International'),
+	                                                  ('rzp_dom', 'Razorpay Domestic'),
+	                                                  ('dr', 'Direct Relief'),
+	                                                  ('high_value', 'High Value Donor')])
+	currency = models.CharField(max_length=5, choices=[('INR', 'INR'), ('USD', 'USD')])
 	company = models.ForeignKey('Company', on_delete=models.SET_NULL, null=True, blank=True)
 	created_at = models.DateTimeField(default=timezone.now)
 

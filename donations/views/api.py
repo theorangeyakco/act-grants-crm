@@ -1,6 +1,7 @@
 from datetime import timedelta
 
 from django.db.models import Sum, Count
+from django.utils.timezone import now
 from django_filters.rest_framework import DjangoFilterBackend, FilterSet
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.filters import SearchFilter
@@ -41,7 +42,10 @@ class GetDonationStatistics(APIView):
 	@staticmethod
 	def get(request):
 		queryset_domestic = Donation.objects.filter(company=request.user.company, domestic=True)
-		end_day = max(queryset_domestic.values_list('payment_time'))[0] + timedelta(days=1)
+		try:
+			end_day = max(queryset_domestic.values_list('payment_time'))[0] + timedelta(days=1)
+		except ValueError:
+			end_day = now().day
 		start_day = end_day - timedelta(days=7)
 		days_domestic = [start_day + timedelta(n)
 		                 for n in range(int((end_day - start_day).days))]
@@ -54,7 +58,10 @@ class GetDonationStatistics(APIView):
 				values_domestic.append(s)
 
 		queryset_international = Donation.objects.filter(company=request.user.company, international=True)
-		end_day = max(queryset_international.values_list('payment_time'))[0] + timedelta(days=1)
+		try:
+			end_day = max(queryset_international.values_list('payment_time'))[0] + timedelta(days=1)
+		except ValueError:
+			end_day = now().day
 		start_day = end_day - timedelta(days=7)
 		days_international = [start_day + timedelta(n)
 		                      for n in range(int((end_day - start_day).days))]
