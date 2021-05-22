@@ -1,3 +1,7 @@
+# Documentation
+Find the API docs here: https://documenter.getpostman.com/view/11883658/TzRSfnKA#f2f5cf4e-ff5e-4ee1-9b6e-1e44dd1a3a8f
+
+
 # Backend Description
 This backend is written in Python using Django, extended by
 the Django Rest Framework. 
