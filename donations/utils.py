@@ -60,8 +60,12 @@ def add_contact_to_hubspot(name: str, phone: str, email: str, act_donor_source: 
 	print(response.text)
 	if response.status_code >= 300:
 		print(response.text)
-		if json.loads(response.text)["error"] == "CONTACT_EXISTS":
-			return
+		try:
+			if json.loads(response.text)["error"] == "CONTACT_EXISTS":
+				return
+		except KeyError:
+			if json.loads(response.text)["status"] == "error":
+				raise Exception("Hubspot contact not created due to invalid email id")
 		raise Exception("Hubspot contact creation failed")
 
 	return
@@ -102,4 +106,6 @@ def add_donations_from_dr(path):
 		                          payment_time=date, company=company, international=True, domestic=False,
 		                          currency='USD', source='dr', success=True)
 		d.save()
+		add_contact_to_hubspot(d.donor_name, '+11111', d.donor_email, 'Direct Relief', d.success)
+
 
