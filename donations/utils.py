@@ -1,10 +1,12 @@
+import datetime
 import json
 import os
 from typing import Union
 
 import requests
+import pandas as pd
 
-from donations.models import Company
+from donations.models import Company, Donation
 
 
 def get_company_from_email(email: str):
@@ -63,3 +65,41 @@ def add_contact_to_hubspot(name: str, phone: str, email: str, act_donor_source: 
 		raise Exception("Hubspot contact creation failed")
 
 	return
+
+def get_company_from_code(code):
+	return Company.objects.get(code=code)
+
+
+def add_donations_from_dr(path):
+	"""
+	This function adds donations from an excel file of the following
+	format:
+	Name | Email | Amount | Date | Code
+
+	Name -> Full Donor Name
+	Email -> Valid email address
+	Amount -> Float/Int in USD
+	Date -> mm/dd/yy
+	Code -> String code
+	:param path: path to donations file
+	:return:
+	"""
+	df = pd.read_csv(path, sep=',')
+	for i in range(1, len(df)):
+		print('hi')
+		date_list = df.iloc[i][3].split('/')
+		date = datetime.datetime(int(date_list[2]), int(date_list[0]), int(date_list[1]))
+		code = df.iloc[i][4]
+		if not pd.isna(code):
+			print(code)
+			company = Company.objects.get(dr_code=code)
+		else:
+			company = None
+		email = df.iloc[i][1]
+		if pd.isna(email):
+			email = None
+		d = Donation(donor_name=df.iloc[i][0], donor_email=email, amount=int(df.iloc[i][2]),
+		                          payment_time=date, company=company, international=True, domestic=False,
+		                          currency='USD', source='dr', success=True)
+		d.save()
+

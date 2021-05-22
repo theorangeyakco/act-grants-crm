@@ -48,6 +48,7 @@ django-rest-framework = "*"
 razorpay = "*"
 mailchimp-transactional = "*"
 mailchimp-marketing = "*"
+pandas = "*"
 
 [requires]
 python_full_version = "3.8.7"
