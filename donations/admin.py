@@ -6,8 +6,8 @@ from donations.models import Donation, Company, Domain
 
 @admin.register(Donation)
 class DonationAdmin(admin.ModelAdmin):
-	list_display =('id', 'amount', 'success', 'domestic', 'international', 'donor_email', 'donor_phone', 'payment_time', 'company')
-	list_filter = ('domestic', 'international', 'payment_time', 'created_at', 'company')
+	list_display =('id', 'amount', 'success', 'domestic', 'international', 'donor_email', 'donor_phone', 'payment_time', 'company', 'source')
+	list_filter = ('domestic', 'international', 'payment_time', 'created_at', 'company', 'source')
 	search_fields = ('donor_name', 'donor_email')
 	readonly_fields = ('rzp_response', 'meta')
 

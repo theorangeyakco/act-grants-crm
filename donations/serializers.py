@@ -12,6 +12,6 @@ class CompanySerializer(serializers.ModelSerializer):
 class DonationSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Donation
-		fields = ['amount', 'domestic', 'international', 'donor_name',
+		fields = ['amount', 'domestic', 'international', 'source','donor_name',
 		          'donor_email', 'donor_phone', 'donor_pan', 'donor_country',
 		          'donor_address', 'donor_zipcode', 'payment_time', 'currency', 'meta']
