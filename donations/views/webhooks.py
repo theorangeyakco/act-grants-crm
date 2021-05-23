@@ -42,7 +42,7 @@ class AcceptDomesticWebhook(APIView):
 						payment_time=datetime.fromtimestamp(int(request.data['payload']['payment']['entity']['created_at']),
 						                                    timezone.utc),
 						rzp_response=request.data, domestic=True, international=False,
-						source='Razorpay Domestic',
+						source='rzp_dom',
 						success=payment.get('captured'),
 						company=get_company_from_notes(notes),
 						meta=notes
@@ -82,7 +82,7 @@ class AcceptInternationalWebhook(APIView):
 						meta=notes,
 						domestic=False,
 						international=True,
-						source='Razorpay International',
+						source='rzp_intl',
 						rzp_response=request.data
 				)
 				d.save()
