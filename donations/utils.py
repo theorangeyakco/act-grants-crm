@@ -70,8 +70,12 @@ def add_contact_to_hubspot(name: str, phone: str, email: str, act_donor_source: 
 
 	return
 
-def get_company_from_code(code):
-	return Company.objects.get(code=code)
+
+def pop_country_from_notes(notes):
+	try:
+		return notes.pop('country').lower().strip()
+	except KeyError:
+		return notes.pop('nationality_or_domicile').lower().strip()
 
 
 def add_donations_from_dr(path):
