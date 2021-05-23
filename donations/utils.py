@@ -57,7 +57,6 @@ def add_contact_to_hubspot(name: str, phone: str, email: str, act_donor_source: 
 		]
 	}
 	response = requests.post(url=url, data=json.dumps(payload), headers=headers)
-	print(response.text)
 	if response.status_code >= 300:
 		print(response.text)
 		try:
@@ -65,8 +64,8 @@ def add_contact_to_hubspot(name: str, phone: str, email: str, act_donor_source: 
 				return
 		except KeyError:
 			if json.loads(response.text)["status"] == "error":
-				raise Exception("Hubspot contact not created due to invalid email id")
-		raise Exception("Hubspot contact creation failed")
+				print("Hubspot contact not created due to invalid email id")
+			print("Hubspot contact creation failed")
 
 	return
 
