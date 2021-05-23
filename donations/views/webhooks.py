@@ -26,7 +26,7 @@ class AcceptDomesticWebhook(APIView):
 		if request.data['event'] == 'payment.captured' or request.data['event'] == 'payment.failed':
 			payment = request.data['payload']['payment']['entity']
 			try:
-				Donation.objects.get(payment.get('id'))
+				Donation.objects.get(rzp_payment_id=payment.get('id'))
 			except Donation.DoesNotExist:
 				notes = payment.get('notes')
 				d = Donation(
@@ -62,7 +62,7 @@ class AcceptInternationalWebhook(APIView):
 		if request.data['event'] == 'payment.captured' or request.data['event'] == 'payment.failed':
 			payment = request.data['payload']['payment']['entity']
 			try:
-				Donation.objects.get(payment.get('id'))
+				Donation.objects.get(rzp_payment_id=payment.get('id'))
 			except Donation.DoesNotExist:
 				notes = payment.get('notes')
 				d = Donation(
