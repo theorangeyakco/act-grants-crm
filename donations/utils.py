@@ -77,6 +77,15 @@ def pop_country_from_notes(notes):
 		return notes.pop('nationality_or_domicile').lower().strip()
 
 
+def pop_name_from_notes(notes):
+	if notes.get('name', False):
+		return notes.pop('name').title()
+	if notes.get('donor_name_or_company_name', False):
+		return notes.pop('donor_name_or_company_name').title()
+	if notes.get('donor_name', False):
+		return notes.pop('donor_name').title()
+
+
 def add_donations_from_dr(path):
 	"""
 	This function adds donations from an excel file of the following

@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from donations.models import Donation
-from donations.utils import get_company_from_notes, add_contact_to_hubspot, pop_country_from_notes
+from donations.utils import get_company_from_notes, add_contact_to_hubspot, pop_country_from_notes, pop_name_from_notes
 
 
 class AcceptDomesticWebhook(APIView):
@@ -33,7 +33,7 @@ class AcceptDomesticWebhook(APIView):
 						rzp_payment_id=payment.get('id'),
 						amount=int(payment.get('amount') / 100),
 						currency=payment.get('currency'),
-						donor_name=notes.pop('name').title(),
+						donor_name=pop_name_from_notes(notes),
 						donor_email=notes.pop('email_address').lower(),
 						donor_pan=notes.pop('pan_number').upper(),
 						donor_address=notes.pop('address'),
