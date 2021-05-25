@@ -69,7 +69,7 @@ class AcceptInternationalWebhook(APIView):
 						rzp_payment_id=payment.get('id'),
 	                    amount=int(payment.get('amount') / 100),
 						currency=payment.get('currency'),
-						donor_name=notes.pop('name').title(),
+						donor_name=pop_name_from_notes(notes),
 						donor_email=notes.pop('email_address').lower(),
 						donor_address=notes.pop('address'),
 						donor_phone=notes.pop('phone'),
