@@ -78,11 +78,11 @@ def pop_country_from_notes(notes):
 
 
 def pop_name_from_notes(notes):
-	if notes.get('name', False):
+	if notes.get('name', True):
 		return notes.pop('name').title()
-	if notes.get('donor_name_or_company_name', False):
+	if notes.get('donor_name_or_company_name', True):
 		return notes.pop('donor_name_or_company_name').title()
-	if notes.get('donor_name', False):
+	if notes.get('donor_name', True):
 		return notes.pop('donor_name').title()
 
 
