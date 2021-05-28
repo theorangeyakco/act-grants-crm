@@ -31,7 +31,7 @@ class DonationViewSet(ReadOnlyModelViewSet, LimitOffsetPagination):
 	search_fields = ('donor_name', 'donor_email', 'donor_phone', 'donor_country')
 
 	def get_queryset(self):
-		return Donation.objects.filter(company=self.get_serializer_context()['request'].user.company).order_by(
+		return Donation.objects.filter(company=self.get_serializer_context()['request'].user.company, success=True).order_by(
 				'-created_at')
 
 
@@ -41,7 +41,7 @@ class GetDonationStatistics(APIView):
 
 	@staticmethod
 	def get(request):
-		queryset_domestic = Donation.objects.filter(company=request.user.company, domestic=True)
+		queryset_domestic = Donation.objects.filter(company=request.user.company, domestic=True, success=True)
 		try:
 			end_day = max(queryset_domestic.values_list('payment_time'))[0] + timedelta(days=1)
 		except ValueError:
@@ -57,7 +57,7 @@ class GetDonationStatistics(APIView):
 			else:
 				values_domestic.append(s)
 
-		queryset_international = Donation.objects.filter(company=request.user.company, international=True)
+		queryset_international = Donation.objects.filter(company=request.user.company, international=True, success=True)
 		try:
 			end_day = max(queryset_international.values_list('payment_time'))[0] + timedelta(days=1)
 		except ValueError:
