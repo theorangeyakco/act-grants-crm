@@ -4,5 +4,15 @@
 {% block title %} Home {% endblock %}
 
 {% block content %}
-  <h1>ACT Grants CRM</h1>
+  <section>
+    <div class="container pt-5 mt-5">
+      <div class="row">
+        <div class="col-md-8 mx-auto text-center">
+          <img src="{% static 'common/img/act_logo.png' %}" style="width: auto; height: 20%" alt="act logo">
+          <h2 class="p-2">ACT Grants Donor Dashboard Management</h2>
+          <a href="{% url 'account_login' %}"><button class="btn btn-primary">Log In</button></a>
+        </div>
+      </div>
+    </div>
+  </section>
 {% endblock %}

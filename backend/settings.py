@@ -170,6 +170,7 @@ INSTALLED_APPS = [
 
 	# Installed Apps
 	# 'storages',
+	'crispy_forms',
 	# 'phonenumber_field',
 	# 'ckeditor',
 	# 'ckeditor_uploader',
@@ -184,7 +185,26 @@ INSTALLED_APPS = [
 	'donations.apps.DonationsConfig'
 ]
 
+# Allauth settings
 SITE_ID = 2
+SITE_NAME = 'crm.actgrants.in'
+
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'  # Either can be used to login
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'http' if DEBUG else 'https'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_SUBJECT_PREFIX = '[ACT Grants CRM] '
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+
+ACCOUNT_FORMS = {
+	'login'                  : 'allauth.account.forms.LoginForm',
+	'signup'                 : 'allauth.account.forms.SignupForm',
+	'add_email'              : 'allauth.account.forms.AddEmailForm',
+	'change_password'        : 'allauth.account.forms.ChangePasswordForm',
+	'set_password'           : 'allauth.account.forms.SetPasswordForm',
+	'reset_password'         : 'allauth.account.forms.ResetPasswordForm',
+	'reset_password_from_key': 'allauth.account.forms.ResetPasswordKeyForm',
+	'disconnect'             : 'allauth.socialaccount.forms.DisconnectForm',
+}
 
 if DEBUG:
 	INSTALLED_APPS += [

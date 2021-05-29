@@ -1,0 +1,17 @@
+{% extends 'global/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 mt-1">
+          {% crispy form %}
+        </div>
+        <div class="col-md-4 mt-1">
+          <a href="{% url 'profile' %}"><button class="btn btn-secondary">Back</button></a>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
