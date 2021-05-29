@@ -108,7 +108,10 @@ def add_donations_from_dr(path):
 		code = df.iloc[i][4]
 		if not pd.isna(code):
 			print(code)
-			company = Company.objects.get(dr_code=code)
+			try:
+				company = Company.objects.get(dr_code=code)
+			except Company.DoesNotExist:
+				company = None
 		else:
 			company = None
 		email = df.iloc[i][1]
