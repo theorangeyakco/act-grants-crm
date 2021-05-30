@@ -102,7 +102,6 @@ def add_donations_from_dr(path):
 	"""
 	df = pd.read_csv(path, sep=',')
 	for i in range(1, len(df)):
-		print('hi')
 		date_list = df.iloc[i][3].split('/')
 		date = datetime.datetime(int(date_list[2]), int(date_list[0]), int(date_list[1]))
 		code = df.iloc[i][4]
@@ -119,8 +118,6 @@ def add_donations_from_dr(path):
 			email = None
 		d = Donation(donor_name=df.iloc[i][0], donor_email=email, amount=int(df.iloc[i][2]),
 		                          payment_time=date, company=company, international=True, domestic=False,
-		                          currency='USD', source='dr', success=True)
+		                          currency='USD', source='dr', success=True, country='USA', donor_phone='-')
 		d.save()
 		add_contact_to_hubspot(d.donor_name, '+11111', d.donor_email, 'Direct Relief', d.success)
-
-

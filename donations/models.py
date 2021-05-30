@@ -16,9 +16,9 @@ class Donation(models.Model):
 	donor_country = models.CharField(max_length=128, null=True)
 	donor_zipcode = models.CharField(max_length=128, null=True, blank=True)
 	payment_time = models.DateTimeField()
-	meta = JSONField(null=True)
+	meta = JSONField(null=True, blank=True)
 	rzp_response = JSONField(null=True)
-	rzp_payment_id = models.CharField(max_length=32, null=True)
+	rzp_payment_id = models.CharField(max_length=32, null=True, blank=True)
 	source = models.CharField(max_length=16, choices=[('rzp_intl', 'Razorpay International'),
 	                                                  ('rzp_dom', 'Razorpay Domestic'),
 	                                                  ('dr', 'Direct Relief'),
