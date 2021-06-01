@@ -23,7 +23,6 @@ class AddYPODonationForm(forms.Form):
 	donor_zipcode = forms.CharField(label="Zip Code (enter N/A if not provided)")
 	ypo_chapter_name = forms.CharField(label="YPO Chapter Name")
 	ypo_member_reference_name = forms.CharField(label="YPO Member Reference (enter N/A if not provided)")
-	ypo_region = forms.CharField(label="YPO Region (enter N/A if not provided)")
 
 	def clean(self):
 		cleaned_data = super().clean()
