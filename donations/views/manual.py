@@ -40,7 +40,7 @@ class AddYPODonationView(View):
 					currency='INR',
 					source='high_value',
 					success=True,
-					# company=Company.objects.get(slug="young_presidents_organization")
+					company=Company.objects.get(slug="young_presidents_organization")
 			)
 			donation.save()
 			messages.add_message(request, messages.SUCCESS, 'Donation added successfully.')
