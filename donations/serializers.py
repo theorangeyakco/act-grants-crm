@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from donations.models import Company, Donation
+from donations.models import Company, Donation, SOURCE_CHOICES
 
 
 class CompanySerializer(serializers.ModelSerializer):
@@ -15,3 +15,8 @@ class DonationSerializer(serializers.ModelSerializer):
 		fields = ['amount', 'domestic', 'international', 'source','donor_name',
 		          'donor_email', 'donor_phone', 'donor_pan', 'donor_country',
 		          'donor_address', 'donor_zipcode', 'payment_time', 'currency', 'meta']
+
+	def to_representation(self, instance):
+		data = super(DonationSerializer, self).to_representation(instance=instance)
+		data['source'] = dict(SOURCE_CHOICES)[data['source']]
+		return data

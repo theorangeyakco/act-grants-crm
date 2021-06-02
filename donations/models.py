@@ -2,6 +2,11 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.postgres.fields import JSONField
 
+SOURCE_CHOICES = [('rzp_intl', 'Razorpay International'),
+                  ('rzp_dom', 'Razorpay Domestic'),
+                  ('dr', 'Direct Relief'),
+                  ('high_value', 'High Value Donor')]
+
 
 class Donation(models.Model):
 	amount = models.IntegerField()
@@ -19,10 +24,7 @@ class Donation(models.Model):
 	meta = JSONField(null=True, blank=True)
 	rzp_response = JSONField(null=True)
 	rzp_payment_id = models.CharField(max_length=32, null=True, blank=True)
-	source = models.CharField(max_length=16, choices=[('rzp_intl', 'Razorpay International'),
-	                                                  ('rzp_dom', 'Razorpay Domestic'),
-	                                                  ('dr', 'Direct Relief'),
-	                                                  ('high_value', 'High Value Donor')])
+	source = models.CharField(max_length=16, choices=SOURCE_CHOICES)
 	currency = models.CharField(max_length=5, choices=[('INR', 'INR'), ('USD', 'USD')])
 	company = models.ForeignKey('Company', on_delete=models.SET_NULL, null=True, blank=True)
 	created_at = models.DateTimeField(default=timezone.now)
@@ -48,6 +50,7 @@ class Company(models.Model):
 
 	def __str__(self):
 		return f"Company - {self.name}"
+
 
 class Domain(models.Model):
 	name = models.CharField(max_length=128)
