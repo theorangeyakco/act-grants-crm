@@ -93,12 +93,12 @@ class ExportToCSV(APIView):
 	authentication_classes = (TokenAuthentication,)
 
 	@staticmethod
-	def get(request, company_slug, domestic):
+	def get(request, domestic):
 		response = HttpResponse(
 				content_type='text/csv',
 		)
 		response['Content-Disposition'] = 'attachment; filename="donor_data_export.csv"'
-		donations = Donation.objects.filter(company=Company.objects.get(slug=company_slug), success=True, domestic=(True if domestic == 'true' else False)).order_by(
+		donations = Donation.objects.filter(company=request.user.company, success=True, domestic=(True if domestic == 'true' else False)).order_by(
 				'-created_at')
 		writer = csv.writer(response)
 		try:

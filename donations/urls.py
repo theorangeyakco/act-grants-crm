@@ -17,7 +17,7 @@ urlpatterns = [
 	path('payment_international/new', csrf_exempt(AcceptInternationalWebhook.as_view()), name='accept_webhook'),
 	path('get_statistics/', GetDonationStatistics.as_view(), name='get_statistics'),
 	path('add_donation/ypo/', AddYPODonationView.as_view(), name='add_ypo_donation'),
-	path('export_to_csv/<str:company_slug>/<str:domestic>/', ExportToCSV.as_view(), name='export_to_csv')
+	path('export_to_csv/<str:domestic>/', ExportToCSV.as_view(), name='export_to_csv')
 ]
 
 urlpatterns += donation_viewset_router.urls
