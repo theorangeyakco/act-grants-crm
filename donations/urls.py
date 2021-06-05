@@ -2,7 +2,7 @@ from django.urls import path
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.routers import DefaultRouter
 
-from donations.views.api import GetDonationStatistics, DonationViewSet
+from donations.views.api import GetDonationStatistics, DonationViewSet, ExportToCSV
 from donations.views.manual import AddYPODonationView
 from donations.views.webhooks import AcceptInternationalWebhook, AcceptDomesticWebhook
 
@@ -15,10 +15,9 @@ donation_viewset_router.register(r'get_all_donations', DonationViewSet, basename
 urlpatterns = [
 	path('payment/new', csrf_exempt(AcceptDomesticWebhook.as_view()), name='accept_webhook'),
 	path('payment_international/new', csrf_exempt(AcceptInternationalWebhook.as_view()), name='accept_webhook'),
-
 	path('get_statistics/', GetDonationStatistics.as_view(), name='get_statistics'),
-
-	path('add_donation/ypo/', AddYPODonationView.as_view(), name='add_ypo_donation')
+	path('add_donation/ypo/', AddYPODonationView.as_view(), name='add_ypo_donation'),
+	path('export_to_csv/<str:company_slug>/<str:domestic>/', ExportToCSV.as_view(), name='export_to_csv')
 ]
 
 urlpatterns += donation_viewset_router.urls

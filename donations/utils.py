@@ -6,7 +6,7 @@ from typing import Union
 import requests
 import pandas as pd
 
-from donations.models import Company, Donation
+from donations.models import Company, Donation, SOURCE_CHOICES
 
 
 def get_company_from_email(email: str):
@@ -121,3 +121,7 @@ def add_donations_from_dr(path):
 		                          currency='USD', source='dr', success=True, country='USA', donor_phone='-')
 		d.save()
 		add_contact_to_hubspot(d.donor_name, '+11111', d.donor_email, 'Direct Relief', d.success)
+
+
+def normalize_source(raw_src):
+	return dict(SOURCE_CHOICES)[raw_src]

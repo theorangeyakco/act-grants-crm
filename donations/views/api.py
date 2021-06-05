@@ -1,7 +1,10 @@
+import csv
 from datetime import timedelta
 
 from django.db.models import Sum, Count
+from django.http import HttpResponse
 from django.utils.timezone import now
+from django.views import View
 from django_filters.rest_framework import DjangoFilterBackend, FilterSet
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.filters import SearchFilter
@@ -11,8 +14,9 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.viewsets import ViewSet, ReadOnlyModelViewSet
 
-from donations.models import Donation
+from donations.models import Donation, Company
 from donations.serializers import DonationSerializer
+from donations.utils import normalize_source
 
 
 class DonationFilter(FilterSet):
@@ -82,3 +86,25 @@ class GetDonationStatistics(APIView):
 		                           'count': queryset_international.aggregate(Count('amount'))}}
 
 		return Response(stats, status=200)
+
+
+class ExportToCSV(View):
+	@staticmethod
+	def get(request, company_slug, domestic):
+		response = HttpResponse(
+				content_type='text/csv',
+		)
+		response['Content-Disposition'] = 'attachment; filename="donor_data_export.csv"'
+		donations = Donation.objects.filter(company=Company.objects.get(slug=company_slug), success=True, domestic=(True if domestic == 'true' else False)).order_by(
+				'-created_at')
+		writer = csv.writer(response)
+		print(list(donations.first().meta.keys()))
+		print(donations.first())
+		writer.writerow(['Source', 'Name', 'Email', 'Phone', 'Country', 'Amount', 'Currency', 'Date'] + list(donations.first().meta.keys()))
+		for donation in donations:
+			writer.writerow([normalize_source(donation.source), donation.donor_name, donation.donor_email,
+			                 donation.donor_phone, donation.donor_country, donation.amount, donation.currency, donation.payment_time.strftime("%d/%m/%y")]
+			                + list(donation.meta.values()))
+
+		return response
+

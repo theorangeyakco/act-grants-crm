@@ -1,12 +1,20 @@
 from rest_framework import serializers
 
-from donations.models import Company, Donation, SOURCE_CHOICES
+from donations.models import Company, Donation
+from donations.utils import normalize_source
 
 
 class CompanySerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Company
-		fields = ['name', 'goal', 'logo', 'active', 'created_at']
+		fields = ['name', 'goal', 'logo', 'active', 'slug', 'created_at']
+
+	def to_representation(self, instance):
+		data = super(CompanySerializer, self).to_representation(instance=instance)
+		data['domestic_csv_export'] = f"https://crm.actgrants.in/donation/export_to_csv/{data['slug']}/true/"
+		data['international_csv_export'] = f"https://crm.actgrants.in/donation/export_to_csv/{data['slug']}/false/"
+		return data
+
 
 
 class DonationSerializer(serializers.ModelSerializer):
@@ -18,5 +26,5 @@ class DonationSerializer(serializers.ModelSerializer):
 
 	def to_representation(self, instance):
 		data = super(DonationSerializer, self).to_representation(instance=instance)
-		data['source'] = dict(SOURCE_CHOICES)[data['source']]
+		data['source'] = normalize_source(data['source'])
 		return data
