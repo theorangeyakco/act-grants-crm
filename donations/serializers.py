@@ -22,4 +22,5 @@ class DonationSerializer(serializers.ModelSerializer):
 	def to_representation(self, instance):
 		data = super(DonationSerializer, self).to_representation(instance=instance)
 		data['source'] = normalize_source(data['source'])
+		data['payment_time'] = data['payment_time'].split('T')[0]
 		return data
