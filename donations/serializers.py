@@ -9,11 +9,6 @@ class CompanySerializer(serializers.ModelSerializer):
 		model = Company
 		fields = ['name', 'goal', 'logo', 'active', 'slug', 'created_at']
 
-	def to_representation(self, instance):
-		data = super(CompanySerializer, self).to_representation(instance=instance)
-		data['domestic_csv_export'] = f"https://crm.actgrants.in/donation/export_to_csv/{data['slug']}/true/"
-		data['international_csv_export'] = f"https://crm.actgrants.in/donation/export_to_csv/{data['slug']}/false/"
-		return data
 
 
 
