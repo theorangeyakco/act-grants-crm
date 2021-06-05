@@ -98,8 +98,6 @@ class ExportToCSV(View):
 		donations = Donation.objects.filter(company=Company.objects.get(slug=company_slug), success=True, domestic=(True if domestic == 'true' else False)).order_by(
 				'-created_at')
 		writer = csv.writer(response)
-		print(list(donations.first().meta.keys()))
-		print(donations.first())
 		writer.writerow(['Source', 'Name', 'Email', 'Phone', 'Country', 'Amount', 'Currency', 'Date'] + list(donations.first().meta.keys()))
 		for donation in donations:
 			writer.writerow([normalize_source(donation.source), donation.donor_name, donation.donor_email,
