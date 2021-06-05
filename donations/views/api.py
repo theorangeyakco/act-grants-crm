@@ -88,7 +88,10 @@ class GetDonationStatistics(APIView):
 		return Response(stats, status=200)
 
 
-class ExportToCSV(View):
+class ExportToCSV(APIView):
+	permission_classes = (IsAuthenticated,)
+	authentication_classes = (TokenAuthentication,)
+
 	@staticmethod
 	def get(request, company_slug, domestic):
 		response = HttpResponse(
@@ -98,7 +101,11 @@ class ExportToCSV(View):
 		donations = Donation.objects.filter(company=Company.objects.get(slug=company_slug), success=True, domestic=(True if domestic == 'true' else False)).order_by(
 				'-created_at')
 		writer = csv.writer(response)
-		writer.writerow(['Source', 'Name', 'Email', 'Phone', 'Country', 'Amount', 'Currency', 'Date'] + list(donations.first().meta.keys()))
+		try:
+			meta_keys = list(donations.first().meta.keys())
+		except TypeError:
+			meta_keys = []
+		writer.writerow(['Source', 'Name', 'Email', 'Phone', 'Country', 'Amount', 'Currency', 'Date'] + meta_keys)
 		for donation in donations:
 			writer.writerow([normalize_source(donation.source), donation.donor_name, donation.donor_email,
 			                 donation.donor_phone, donation.donor_country, donation.amount, donation.currency, donation.payment_time.strftime("%d/%m/%y")]
