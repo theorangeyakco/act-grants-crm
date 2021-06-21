@@ -70,6 +70,61 @@ def add_contact_to_hubspot(name: str, phone: str, email: str, act_donor_source: 
 	return
 
 
+def send_80g_recipt(name: str, address: str, email: str):
+	url = f"https://api.hubapi.com/email/public/v1/singleEmail/send?hapikey={os.environ.get('HUBSPOT_API_KEY')}"
+	headers = {"Content-Type": "application/json"}
+	payload = {
+		"emailId"         : 49207934017,
+		"message"         : {
+			"to"    : email,
+			"sendId": "donations@actgrants.in"
+		},
+		"customProperties": [
+			{
+				"name" : "receipt_date",
+				"value": ""
+			},
+			{
+				"name" : "address",
+				"value": address
+			},
+			{
+				"name" : "pan_number",
+				"value": "something they bought"
+			},
+			{
+				"name" : "name",
+				"value": name
+			},
+			{
+				"name" : "rzp_id",
+				"value": "something they bought"
+			},
+			{
+				"name" : "receipt_no",
+				"value": "something they bought"
+			},
+			{
+				"name" : "total_donation_amount",
+				"value": "something they bought"
+			},
+			{
+				"name" : "total_donation_amount_in_words",
+				"value": "something they bought"
+			},
+			{
+				"name" : "total_donation_amount",
+				"value": "something they bought"
+			}
+		]
+	}
+	response = requests.post(url=url, data=json.dumps(payload), headers=headers)
+	print(response.text)
+	if response.status_code >= 300:
+		pass
+	return
+
+
 def pop_country_from_notes(notes):
 	try:
 		return notes.pop('country').lower().strip()
@@ -117,8 +172,8 @@ def add_donations_from_dr(path):
 		if pd.isna(email):
 			email = None
 		d = Donation(donor_name=df.iloc[i][0], donor_email=email, amount=int(df.iloc[i][2]),
-		                          payment_time=date, company=company, international=True, domestic=False,
-		                          currency='USD', source='dr', success=True, country='USA', donor_phone='-')
+		             payment_time=date, company=company, international=True, domestic=False,
+		             currency='USD', source='dr', success=True, country='USA', donor_phone='-')
 		d.save()
 		add_contact_to_hubspot(d.donor_name, '+11111', d.donor_email, 'Direct Relief', d.success)
 
