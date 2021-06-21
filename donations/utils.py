@@ -1,4 +1,5 @@
 import datetime
+import decimal
 import json
 import os
 from typing import Union
@@ -70,52 +71,74 @@ def add_contact_to_hubspot(name: str, phone: str, email: str, act_donor_source: 
 	return
 
 
-def send_80g_recipt(name: str, address: str, email: str):
+def num2words(num):
+	num = decimal.Decimal(num)
+	decimal_part = num - int(num)
+	num = int(num)
+
+	if decimal_part:
+		return num2words(num) + " point " + (" ".join(num2words(i) for i in str(decimal_part)[2:]))
+
+	under_20 = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven',
+	            'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen']
+	tens = ['Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety']
+	above_100 = {100: 'Hundred', 1000: 'Thousand', 100000: 'Lakhs', 10000000: 'Crores'}
+
+	if num < 20:
+		return under_20[num]
+
+	if num < 100:
+		return tens[num // 10 - 2] + ('' if num % 10 == 0 else ' ' + under_20[num % 10])
+
+	# find the appropriate pivot - 'Million' in 3,603,550, or 'Thousand' in 603,550
+	pivot = max([key for key in above_100.keys() if key <= num])
+
+	return num2words(num // pivot) + ' ' + above_100[pivot] + ('' if num % pivot == 0 else ' ' + num2words(num % pivot))
+
+
+def send_80g_receipt(name: str, address: str, email: str, date: datetime.datetime, pan_number: str, rzp_id: str,
+                     amount: str):
 	url = f"https://api.hubapi.com/email/public/v1/singleEmail/send?hapikey={os.environ.get('HUBSPOT_API_KEY')}"
 	headers = {"Content-Type": "application/json"}
 	payload = {
 		"emailId"         : 49207934017,
 		"message"         : {
-			"to"    : email,
-			"sendId": "donations@actgrants.in"
+			"to"    : email.lower(),
+			"sendId": rzp_id,
 		},
 		"customProperties": [
 			{
 				"name" : "receipt_date",
-				"value": ""
+				"value": date.strftime("%d/%m/%Y")
 			},
 			{
 				"name" : "address",
-				"value": address
+				"value": address.lower().capitalize()
 			},
 			{
 				"name" : "pan_number",
-				"value": "something they bought"
+				"value": pan_number.upper(),
 			},
 			{
 				"name" : "name",
-				"value": name
+				"value": name.lower().capitalize()
 			},
 			{
 				"name" : "rzp_id",
-				"value": "something they bought"
+				"value": rzp_id.lower()
 			},
 			{
 				"name" : "receipt_no",
-				"value": "something they bought"
+				"value": "ACT/" + rzp_id[4:].lower() + f"/{date.strftime('%D%M%Y')}"
 			},
 			{
 				"name" : "total_donation_amount",
-				"value": "something they bought"
+				"value": amount,
 			},
 			{
 				"name" : "total_donation_amount_in_words",
-				"value": "something they bought"
+				"value": num2words(amount)
 			},
-			{
-				"name" : "total_donation_amount",
-				"value": "something they bought"
-			}
 		]
 	}
 	response = requests.post(url=url, data=json.dumps(payload), headers=headers)
@@ -124,6 +147,13 @@ def send_80g_recipt(name: str, address: str, email: str):
 		pass
 	return
 
+
+def send_80g_from_excel(path):
+	df = pd.reac_csv(path, sep=",")
+	for i in range(1, len(df)):
+		date_string = df.iloc[i][0]
+		amount = int(df.iloc[i][1])
+		rzp_id
 
 def pop_country_from_notes(notes):
 	try:
