@@ -153,15 +153,17 @@ def send_80g_receipt(name: str, address: str, email: str, date: datetime, pan_nu
 def send_80g_from_excel(path):
 	df = pd.read_csv(path, sep=",")
 	for i in range(0, len(df)):
-		date = datetime.strptime(df.iloc[i][0], "%d/%m/%Y %I:%M:%S")
-		amount = int(df.iloc[i][1])
-		rzp_id = df.iloc[i][2]
-		name = df.iloc[i][3]
-		email = df.iloc[i][5]
-		pan = df.iloc[i][6]
-		address = df.iloc[i][7]
-		send_80g_receipt(name, address, email, date, pan, rzp_id, amount)
-		time.sleep(1)
+		try:
+			date = datetime.strptime(df.iloc[i][0].split()[0], "%d/%m/%Y")
+			amount = int(df.iloc[i][1])
+			rzp_id = df.iloc[i][2]
+			name = df.iloc[i][3]
+			email = df.iloc[i][5]
+			pan = df.iloc[i][6]
+			address = df.iloc[i][7]
+			send_80g_receipt(name, address, email, date, pan, rzp_id, amount)
+		except:
+			continue
 
 
 def pop_country_from_notes(notes):
