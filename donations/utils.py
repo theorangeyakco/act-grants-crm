@@ -1,4 +1,5 @@
-import datetime
+import time
+from datetime import datetime
 import decimal
 import json
 import os
@@ -96,8 +97,8 @@ def num2words(num):
 	return num2words(num // pivot) + ' ' + above_100[pivot] + ('' if num % pivot == 0 else ' ' + num2words(num % pivot))
 
 
-def send_80g_receipt(name: str, address: str, email: str, date: datetime.datetime, pan_number: str, rzp_id: str,
-                     amount: str):
+def send_80g_receipt(name: str, address: str, email: str, date: datetime, pan_number: str, rzp_id: str,
+                     amount: int):
 	url = f"https://api.hubapi.com/email/public/v1/singleEmail/send?hapikey={os.environ.get('HUBSPOT_API_KEY')}"
 	headers = {"Content-Type": "application/json"}
 	payload = {
@@ -149,11 +150,18 @@ def send_80g_receipt(name: str, address: str, email: str, date: datetime.datetim
 
 
 def send_80g_from_excel(path):
-	df = pd.reac_csv(path, sep=",")
-	for i in range(1, len(df)):
-		date_string = df.iloc[i][0]
+	df = pd.read_csv(path, sep=",")
+	for i in range(0, len(df)):
+		date = datetime.strptime(df.iloc[i][0], "%d/%m/%Y %I:%M:%S")
 		amount = int(df.iloc[i][1])
-		rzp_id
+		rzp_id = df.iloc[i][2]
+		name = df.iloc[i][3]
+		email = df.iloc[i][5]
+		pan = df.iloc[i][6]
+		address = df.iloc[i][7]
+		send_80g_receipt(name, address, email, date, pan, rzp_id, amount)
+		time.sleep(1)
+
 
 def pop_country_from_notes(notes):
 	try:
