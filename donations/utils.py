@@ -105,6 +105,7 @@ def send_80g_receipt(name: str, address: str, email: str, date: datetime, pan_nu
 		"emailId"         : 49207934017,
 		"message"         : {
 			"to"    : email.lower(),
+			"cc"    : ["actgrants.developers@gmail.com"],
 			"sendId": rzp_id,
 		},
 		"customProperties": [
