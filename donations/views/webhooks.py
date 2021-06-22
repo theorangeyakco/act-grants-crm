@@ -5,7 +5,8 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from donations.models import Donation
-from donations.utils import get_company_from_notes, add_contact_to_hubspot, pop_country_from_notes, pop_name_from_notes
+from donations.utils import get_company_from_notes, add_contact_to_hubspot, pop_country_from_notes, pop_name_from_notes, \
+	send_80g_receipt
 
 
 class AcceptDomesticWebhook(APIView):
@@ -49,6 +50,7 @@ class AcceptDomesticWebhook(APIView):
 				)
 				d.save()
 				add_contact_to_hubspot(d.donor_name, d.donor_phone, d.donor_email, 'Razorpay International', d.success)
+				send_80g_receipt(d.donor_name, d.donor_address, d.donor_email, d.payment_time, d.donor_pan, d.rzp_payment_id, d.amount)
 
 		return Response(200)
 
