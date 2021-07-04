@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/act-grants-crm.iml" filepath="$PROJECT_DIR$/.idea/act-grants-crm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../intersection/.idea/intersection.iml" filepath="$PROJECT_DIR$/../intersection/.idea/intersection.iml" />
     </modules>
   </component>
 </project>

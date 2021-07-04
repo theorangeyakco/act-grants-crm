@@ -18,6 +18,7 @@
     </content>
     <orderEntry type="jdk" jdkName="3.8 @ Ubuntu" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="intersection" />
   </component>
   <component name="TemplatesService">
     <option name="TEMPLATE_CONFIGURATION" value="Django" />

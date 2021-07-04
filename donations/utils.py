@@ -109,38 +109,22 @@ def send_80g_receipt(name: str, address: str, email: str, date: datetime, pan_nu
 			"sendId": rzp_id,
 		},
 		"customProperties": [
-			{
-				"name" : "receipt_date",
-				"value": date.strftime("%d/%m/%Y")
-			},
-			{
-				"name" : "address",
-				"value": address.lower().capitalize()
-			},
-			{
-				"name" : "pan_number",
-				"value": pan_number.upper(),
-			},
-			{
-				"name" : "name",
-				"value": name.lower().capitalize()
-			},
-			{
-				"name" : "rzp_id",
-				"value": rzp_id.lower()
-			},
-			{
-				"name" : "receipt_no",
-				"value": "ACT/" + rzp_id[4:].lower() + f"/{date.strftime('%D%M%Y')}"
-			},
-			{
-				"name" : "total_donation_amount",
-				"value": amount,
-			},
-			{
-				"name" : "total_donation_amount_in_words",
-				"value": num2words(amount)
-			},
+			{"name" : "receipt_date",
+			 "value": date.strftime("%d/%m/%Y")},
+			{"name" : "address",
+			 "value": address.lower().capitalize()},
+			{"name" : "pan_number",
+			 "value": pan_number.upper(),},
+			{"name" : "name",
+			 "value": name.lower().capitalize()},
+			{"name" : "rzp_id",
+			 "value": rzp_id.lower()},
+			{"name" : "receipt_no",
+			 "value": "ACT/" + rzp_id[4:].lower() + f"/{date.strftime('%D%M%Y')}"},
+			{"name" : "total_donation_amount",
+			 "value": amount,},
+			{"name" : "total_donation_amount_in_words",
+			 "value": num2words(amount)},
 		]
 	}
 	response = requests.post(url=url, data=json.dumps(payload), headers=headers)

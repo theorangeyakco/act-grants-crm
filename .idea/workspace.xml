@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ab698d7f-b57f-4e80-b0aa-649c1edaed9d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/act-grants-crm.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/act-grants-crm.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/donations/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/donations/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../intersection/proxy/conf.d/default.conf" beforeDir="false" afterPath="$PROJECT_DIR$/../intersection/proxy/conf.d/default.conf" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,6 +18,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1uHCQ7v0WGJHaSW2m9ixHYTWZg0" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="compactDirectories" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -24,7 +29,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../sorobrain" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -42,7 +47,9 @@
       <option name="presentableId" value="Default" />
       <updated>1624313108312</updated>
       <workItem from="1624313109781" duration="5652000" />
-      <workItem from="1624332243914" duration="3683000" />
+      <workItem from="1624332243914" duration="6360000" />
+      <workItem from="1624640272380" duration="62000" />
+      <workItem from="1624907374962" duration="46000" />
     </task>
     <servers />
   </component>
